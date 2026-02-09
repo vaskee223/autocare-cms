@@ -1,0 +1,115 @@
+import { Injectable, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+
+import { FilterField } from '../../../core/interfaces/filter-field.interface';
+import { TableHeader } from '../../../core/interfaces/table-header.interface';
+
+@Injectable({ providedIn: 'root' })
+export class MaintenancesFieldsService {
+  private fb = inject(FormBuilder);
+
+  maintenanceNameOptions = [
+    { label: 'Small Service', value: 'small_service' },
+    { label: 'Big Service', value: 'big_service' },
+    { label: 'Tire Change', value: 'tire_change' },
+    { label: 'Clutch Set', value: 'clutch_set' },
+    { label: 'Other', value: 'other' },
+  ];
+
+  filterFields: FilterField[] = [
+    {
+      type: 'text',
+      formControlName: 'search',
+      label: 'maintenances.filter.search',
+      placeholder: 'maintenances.filter.placeholders.search',
+      colSpan: 4,
+    },
+    {
+      type: 'number',
+      formControlName: 'mileageFrom',
+      label: 'maintenances.filter.mileageFrom',
+      placeholder: 'maintenances.filter.placeholders.mileageFrom',
+      colSpan: 4,
+    },
+    {
+      type: 'number',
+      formControlName: 'mileageTo',
+      label: 'maintenances.filter.mileageTo',
+      placeholder: 'maintenances.filter.placeholders.mileageTo',
+      colSpan: 4,
+    },
+    {
+      type: 'date',
+      formControlName: 'dateRangeFrom',
+      label: 'maintenances.filter.dateFrom',
+      placeholder: 'maintenances.filter.placeholders.dateFrom',
+      colSpan: 4,
+    },
+    {
+      type: 'date',
+      formControlName: 'dateRangeTo',
+      label: 'maintenances.filter.dateTo',
+      placeholder: 'maintenances.filter.placeholders.dateTo',
+      colSpan: 4,
+    },
+  ];
+
+  createFilterForm(): FormGroup {
+    return this.fb.group({
+      search: [''],
+      mileageFrom: [null],
+      mileageTo: [null],
+      dateRangeFrom: [null],
+      dateRangeTo: [null],
+    });
+  }
+
+  createMainForm(): FormGroup {
+    return this.fb.group({
+      carId: [null, [Validators.required]],
+      name: ['', [Validators.required]],
+      mileage: [null, [Validators.required]],
+      date: [null, [Validators.required]],
+      replacedParts: this.fb.array([]),
+      servicePrice: [null, [Validators.required]],
+    });
+  }
+
+  createEditForm(): FormGroup {
+    return this.fb.group({
+      name: ['', [Validators.required]],
+      mileage: [null, [Validators.required]],
+      date: [null, [Validators.required]],
+      replacedParts: this.fb.array([]),
+      servicePrice: [null, [Validators.required]],
+    });
+  }
+
+  createPartGroup(name = '', price: number | null = null): FormGroup {
+    return this.fb.group({
+      name: [name, [Validators.required]],
+      price: [price, [Validators.required]],
+    });
+  }
+
+  tableHeaders: TableHeader[] = [
+    {
+      field: 'id',
+      header: 'maintenances.table.id',
+      sort: { sortParam: 'id', sortDirection: '', activeSort: false },
+    },
+    { field: 'carId', header: 'maintenances.table.carId' },
+    { field: 'name', header: 'maintenances.table.name' },
+    { field: 'mileage', header: 'maintenances.table.mileage' },
+    { field: 'servicePrice', header: 'maintenances.table.servicePrice' },
+    { field: 'date', header: 'maintenances.table.date', date: true },
+  ];
+
+  nestedTableHeaders: TableHeader[] = [
+    { field: 'id', header: 'maintenances.table.id' },
+    { field: 'name', header: 'maintenances.table.name' },
+    { field: 'mileage', header: 'maintenances.table.mileage' },
+    { field: 'servicePrice', header: 'maintenances.table.servicePrice' },
+    { field: 'date', header: 'maintenances.table.date', date: true },
+  ];
+}

@@ -1,0 +1,209 @@
+<div class="p-6">
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-4">
+      <p-button
+        icon="pi pi-arrow-left"
+        [rounded]="true"
+        [text]="true"
+        (onClick)="goBack()"
+      />
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">
+          {{ "fuelConsumptions.edit.title" | translate }}
+        </h1>
+        @if (fuelConsumption(); as fc) {
+          <p class="text-gray-500">
+            {{ "fuelConsumptions.edit.subtitle" | translate }} #{{ fc.id }} —
+            {{ "fuelConsumptions.edit.car" | translate }} #{{ fc.carId }}
+          </p>
+        }
+      </div>
+    </div>
+    <p-button
+      [label]="'buttons.save' | translate"
+      (onClick)="onSubmit()"
+      [loading]="saving()"
+    />
+  </div>
+
+  @if (loading()) {
+    <app-form-skeleton [count]="6" />
+  } @else {
+    <div class="wrapper !p-6">
+      <form [formGroup]="form" class="grid grid-cols-12 gap-4">
+        <!-- Phase 1: Refuel Data -->
+        <div class="col-span-12">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "fuelConsumptions.phase1.title" | translate }}
+          </h3>
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.refuelDate" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <p-datepicker
+            fluid
+            formControlName="refuelDate"
+            dateFormat="yy-mm-dd"
+            styleClass="w-full"
+            [showIcon]="true"
+          />
+          <app-field-errors
+            [errors]="form.get('refuelDate')?.errors ?? null"
+            [control]="form.get('refuelDate')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.litersRefueled" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <p-inputnumber
+            formControlName="litersRefueled"
+            [useGrouping]="false"
+            [minFractionDigits]="0"
+            [maxFractionDigits]="2"
+            styleClass="w-full"
+            suffix=" L"
+          />
+          <app-field-errors
+            [errors]="form.get('litersRefueled')?.errors ?? null"
+            [control]="form.get('litersRefueled')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.pricePerLiter" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <p-inputnumber
+            formControlName="pricePerLiter"
+            [useGrouping]="false"
+            [minFractionDigits]="0"
+            [maxFractionDigits]="2"
+            styleClass="w-full"
+          />
+          <app-field-errors
+            [errors]="form.get('pricePerLiter')?.errors ?? null"
+            [control]="form.get('pricePerLiter')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.startMileage" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <p-inputnumber
+            formControlName="startMileage"
+            [useGrouping]="false"
+            styleClass="w-full"
+            suffix=" km"
+          />
+          <app-field-errors
+            [errors]="form.get('startMileage')?.errors ?? null"
+            [control]="form.get('startMileage')"
+          />
+        </div>
+
+        <!-- Phase 2: Completion Data -->
+        <div class="col-span-12 mt-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">
+            {{ "fuelConsumptions.phase2.title" | translate }}
+          </h3>
+          @if (!fuelConsumption()?.completed) {
+            <p class="text-sm text-orange-500 mb-2">
+              {{ "fuelConsumptions.phase2.pending" | translate }}
+            </p>
+          }
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.emptyDate" | translate }}
+          </label>
+          <p-datepicker
+            fluid
+            formControlName="emptyDate"
+            dateFormat="yy-mm-dd"
+            styleClass="w-full"
+            [showIcon]="true"
+            [showClear]="true"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "fuelConsumptions.fields.endMileage" | translate }}
+          </label>
+          <p-inputnumber
+            formControlName="endMileage"
+            [useGrouping]="false"
+            styleClass="w-full"
+            suffix=" km"
+          />
+        </div>
+
+        <!-- Computed Fields (read-only) -->
+        @if (fuelConsumption()?.completed) {
+          <div class="col-span-12 mt-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              {{ "fuelConsumptions.computed.title" | translate }}
+            </h3>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 lg:col-span-3">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm text-gray-500 mb-1">
+                {{ "fuelConsumptions.computed.distanceTraveled" | translate }}
+              </p>
+              <p class="text-lg font-semibold text-gray-900">
+                {{ fuelConsumption()?.distanceTraveled }} km
+              </p>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 lg:col-span-3">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm text-gray-500 mb-1">
+                {{
+                  "fuelConsumptions.computed.consumptionPer100km" | translate
+                }}
+              </p>
+              <p class="text-lg font-semibold text-gray-900">
+                {{ fuelConsumption()?.consumptionPer100km | number: "1.2-2" }}
+                L/100km
+              </p>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 lg:col-span-3">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm text-gray-500 mb-1">
+                {{ "fuelConsumptions.computed.costPer100km" | translate }}
+              </p>
+              <p class="text-lg font-semibold text-gray-900">
+                {{ fuelConsumption()?.costPer100km | number: "1.2-2" }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-span-12 md:col-span-6 lg:col-span-3">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <p class="text-sm text-gray-500 mb-1">
+                {{ "fuelConsumptions.computed.totalCost" | translate }}
+              </p>
+              <p class="text-lg font-semibold text-gray-900">
+                {{ fuelConsumption()?.totalCost | number: "1.2-2" }}
+              </p>
+            </div>
+          </div>
+        }
+      </form>
+    </div>
+  }
+</div>

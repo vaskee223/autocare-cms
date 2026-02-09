@@ -1,0 +1,40 @@
+<app-content-layout
+  title="fuelConsumptions.title"
+  description="fuelConsumptions.description"
+>
+  <!-- Filters -->
+  <app-filter-form [form]="filterForm" [fields]="filterFields" />
+
+  <!-- Table -->
+  <div class="wrapper">
+    <app-table
+      [tableHeader]="tableHeaders"
+      [tableData]="data()"
+      [pagination]="pagination()"
+      [loading]="loading()"
+      [options]="{ showPreview: true, showDelete: true, showEdit: false }"
+      (handlePageChange)="onPageChange($event)"
+      (handleDelete)="onDelete($event)"
+      (handlePreview)="onPreview($event)"
+      (handleSort)="onSort($event)"
+    >
+      <ng-template appColumnTemplate="carId" let-row>
+        <a
+          [routerLink]="['/cars', row.carId]"
+          class="text-blue-600 hover:text-blue-800 hover:underline"
+        >
+          {{ row.carId }}
+        </a>
+      </ng-template>
+      <ng-template appColumnTemplate="completed" let-row>
+        @if (row.completed) {
+          <span class="text-green-600"><i class="pi pi-check"></i></span>
+        } @else {
+          <span class="text-orange-500"><i class="pi pi-clock"></i></span>
+        }
+      </ng-template>
+    </app-table>
+  </div>
+</app-content-layout>
+
+<p-confirmpopup />

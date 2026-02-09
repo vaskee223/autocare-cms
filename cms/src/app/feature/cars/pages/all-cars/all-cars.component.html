@@ -1,0 +1,26 @@
+<app-content-layout
+  title="cars.title"
+  description="cars.description"
+  actionLabel="buttons.add"
+  (actionClick)="onAdd()"
+>
+  <!-- Filters -->
+  <app-filter-form [form]="filterForm" [fields]="filterFields" />
+
+  <!-- Table -->
+  <div class="wrapper">
+    <app-table
+      [tableHeader]="tableHeaders"
+      [tableData]="data()"
+      [pagination]="pagination()"
+      [loading]="loading()"
+      [options]="{ showPreview: true, showDelete: true, showEdit: false }"
+      (handlePageChange)="onPageChange($event)"
+      (handleDelete)="onDelete($event)"
+      (handlePreview)="onPreview($event)"
+      (handleSort)="onSort($event)"
+    />
+  </div>
+</app-content-layout>
+
+<p-confirmpopup />

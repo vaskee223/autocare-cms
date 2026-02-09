@@ -1,0 +1,243 @@
+{
+  "sidebar": {
+    "title": "Auto Care CMS",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "cars": "Cars",
+    "maintenances": "Maintenances",
+    "fuelConsumptions": "Fuel Consumptions",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Admin Login",
+    "subtitle": "Sign in to your account",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Sign In"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "System overview and statistics",
+    "totalUsers": "Total Users",
+    "totalCars": "Total Cars",
+    "totalMaintenances": "Total Maintenances",
+    "totalFuelConsumptions": "Total Fuel Consumptions"
+  },
+  "users": {
+    "title": "Users",
+    "description": "Manage system users",
+    "filter": {
+      "search": "Search",
+      "dateFrom": "Created From",
+      "dateTo": "Created To",
+      "placeholders": {
+        "search": "Search by name, email...",
+        "dateFrom": "Select start date",
+        "dateTo": "Select end date"
+      }
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "dateOfBirth": "Date of Birth",
+      "password": "Password"
+    },
+    "table": {
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "createdAt": "Created At"
+    },
+    "add": {
+      "title": "Add User"
+    },
+    "edit": {
+      "title": "Edit User"
+    }
+  },
+  "cars": {
+    "title": "Cars",
+    "description": "Manage all cars in the system",
+    "filter": {
+      "search": "Search",
+      "mileageFrom": "Mileage From",
+      "mileageTo": "Mileage To",
+      "registrationDateFrom": "Registration From",
+      "registrationDateTo": "Registration To",
+      "fuelType": "Fuel Type",
+      "bodyType": "Body Type",
+      "placeholders": {
+        "search": "Search by brand, model, VIN...",
+        "mileageFrom": "Min mileage",
+        "mileageTo": "Max mileage",
+        "registrationDateFrom": "Select start date",
+        "registrationDateTo": "Select end date",
+        "fuelType": "Select fuel type",
+        "bodyType": "Select body type"
+      }
+    },
+    "fields": {
+      "userId": "User ID",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "fuelType": "Fuel Type",
+      "bodyType": "Body Type",
+      "vinNumber": "VIN Number",
+      "color": "Color",
+      "mileage": "Mileage",
+      "registrationDate": "Registration Date",
+      "engineCode": "Engine Code",
+      "transmissionCode": "Transmission Code"
+    },
+    "table": {
+      "id": "ID",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "fuelType": "Fuel Type",
+      "bodyType": "Body Type",
+      "mileage": "Mileage",
+      "registrationDate": "Registration Date"
+    },
+    "add": {
+      "title": "Add Car"
+    },
+    "edit": {
+      "title": "Edit Car"
+    },
+    "maintenances": {
+      "title": "Maintenances"
+    },
+    "fuelConsumptions": {
+      "title": "Fuel Consumptions"
+    }
+  },
+  "maintenances": {
+    "title": "Maintenances",
+    "description": "Manage all maintenance records",
+    "filter": {
+      "search": "Search",
+      "mileageFrom": "Mileage From",
+      "mileageTo": "Mileage To",
+      "dateFrom": "Date From",
+      "dateTo": "Date To",
+      "placeholders": {
+        "search": "Search by type, car...",
+        "mileageFrom": "Min mileage",
+        "mileageTo": "Max mileage",
+        "dateFrom": "Select start date",
+        "dateTo": "Select end date"
+      }
+    },
+    "fields": {
+      "name": "Type",
+      "mileage": "Mileage",
+      "date": "Date",
+      "servicePrice": "Service Price",
+      "replacedParts": "Replaced Parts",
+      "partName": "Part Name",
+      "partPrice": "Part Price"
+    },
+    "table": {
+      "id": "ID",
+      "carId": "Car ID",
+      "name": "Type",
+      "mileage": "Mileage",
+      "servicePrice": "Service Price",
+      "date": "Date"
+    },
+    "edit": {
+      "title": "Edit Maintenance",
+      "subtitle": "Maintenance",
+      "car": "Car"
+    },
+    "addPart": "Add Part"
+  },
+  "fuelConsumptions": {
+    "title": "Fuel Consumptions",
+    "description": "Manage all fuel consumption records",
+    "filter": {
+      "search": "Search",
+      "dateFrom": "Refuel Date From",
+      "dateTo": "Refuel Date To",
+      "placeholders": {
+        "search": "Search...",
+        "dateFrom": "Select start date",
+        "dateTo": "Select end date"
+      }
+    },
+    "fields": {
+      "refuelDate": "Refuel Date",
+      "emptyDate": "Empty Date",
+      "litersRefueled": "Liters Refueled",
+      "pricePerLiter": "Price per Liter",
+      "startMileage": "Start Mileage",
+      "endMileage": "End Mileage"
+    },
+    "table": {
+      "id": "ID",
+      "carId": "Car ID",
+      "refuelDate": "Refuel Date",
+      "litersRefueled": "Liters",
+      "totalCost": "Total Cost",
+      "completed": "Status"
+    },
+    "edit": {
+      "title": "Edit Fuel Consumption",
+      "subtitle": "Fuel Consumption",
+      "car": "Car"
+    },
+    "phase1": {
+      "title": "Refuel Data"
+    },
+    "phase2": {
+      "title": "Completion Data",
+      "pending": "Fill in empty date and end mileage to complete this entry."
+    },
+    "computed": {
+      "title": "Computed Results",
+      "distanceTraveled": "Distance Traveled",
+      "consumptionPer100km": "Consumption per 100km",
+      "costPer100km": "Cost per 100km",
+      "totalCost": "Total Cost"
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "description": "Manage your account settings",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "New Password",
+      "passwordConfirm": "Confirm Password"
+    },
+    "passwordHint": "Leave password fields empty to keep your current password.",
+    "deleteAccount": "Delete Account"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "add": "Add New"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minlength": "Value is too short"
+  },
+  "confirmations": {
+    "delete": "Are you sure you want to delete this item?"
+  },
+  "common": {
+    "actions": "Actions",
+    "noData": "No data available",
+    "filters": "Filters"
+  }
+}

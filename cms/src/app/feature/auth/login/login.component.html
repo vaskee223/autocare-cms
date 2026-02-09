@@ -1,0 +1,54 @@
+<div class="w-full max-w-lg bg-white rounded-xl shadow-lg p-8 w-sm">
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-bold text-gray-900">
+      {{ "login.title" | translate }}
+    </h1>
+    <p class="text-gray-500 mt-2">{{ "login.subtitle" | translate }}</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-5">
+    <div class="flex flex-col gap-1">
+      <label class="secondary-text" for="email">
+        {{ "login.email" | translate }} <span class="text-red-500">*</span>
+      </label>
+      <input
+        pInputText
+        id="email"
+        formControlName="email"
+        type="email"
+        class="w-full"
+        [placeholder]="'login.emailPlaceholder' | translate"
+      />
+      <app-field-errors
+        [errors]="form.get('email')?.errors ?? null"
+        [control]="form.get('email')"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label class="secondary-text" for="password">
+        {{ "login.password" | translate }} <span class="text-red-500">*</span>
+      </label>
+      <p-password
+        id="password"
+        formControlName="password"
+        [toggleMask]="true"
+        [feedback]="false"
+        styleClass="w-full"
+        inputStyleClass="w-full"
+        [placeholder]="'login.passwordPlaceholder' | translate"
+      />
+      <app-field-errors
+        [errors]="form.get('password')?.errors ?? null"
+        [control]="form.get('password')"
+      />
+    </div>
+
+    <p-button
+      type="submit"
+      [label]="'login.submit' | translate"
+      styleClass="w-full"
+      [loading]="loading()"
+    />
+  </form>
+</div>

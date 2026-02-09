@@ -1,0 +1,134 @@
+<form [formGroup]="form" class="grid grid-cols-12 gap-4 p-4">
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "maintenances.fields.name" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-select
+      formControlName="name"
+      [options]="maintenanceNameOptions"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full"
+      placeholder="Select..."
+    />
+    <app-field-errors
+      [errors]="form.get('name')?.errors ?? null"
+      [control]="form.get('name')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "maintenances.fields.mileage" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="mileage"
+      [useGrouping]="false"
+      styleClass="w-full"
+      suffix=" km"
+    />
+    <app-field-errors
+      [errors]="form.get('mileage')?.errors ?? null"
+      [control]="form.get('mileage')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "maintenances.fields.date" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-datepicker
+      fluid
+      formControlName="date"
+      dateFormat="yy-mm-dd"
+      styleClass="w-full"
+      [showIcon]="true"
+    />
+    <app-field-errors
+      [errors]="form.get('date')?.errors ?? null"
+      [control]="form.get('date')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "maintenances.fields.servicePrice" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="servicePrice"
+      [useGrouping]="false"
+      styleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('servicePrice')?.errors ?? null"
+      [control]="form.get('servicePrice')"
+    />
+  </div>
+
+  <!-- Replaced Parts -->
+  <div class="col-span-12">
+    <div class="flex justify-between items-center mb-2">
+      <label class="secondary-text">
+        {{ "maintenances.fields.replacedParts" | translate }}
+      </label>
+      <p-button
+        icon="pi pi-plus"
+        [label]="'maintenances.addPart' | translate"
+        [text]="true"
+        size="small"
+        (onClick)="addPart()"
+      />
+    </div>
+
+    @for (part of replacedParts.controls; track $index; let i = $index) {
+      <div
+        class="grid grid-cols-12 gap-2 mb-2"
+        [formArrayName]="'replacedParts'"
+      >
+        <div class="col-span-6" [formGroupName]="i">
+          <input
+            pInputText
+            formControlName="name"
+            class="w-full"
+            [placeholder]="'maintenances.fields.partName' | translate"
+          />
+        </div>
+        <div class="col-span-4" [formGroupName]="i">
+          <p-inputnumber
+            formControlName="price"
+            [useGrouping]="false"
+            styleClass="w-full"
+            [placeholder]="'maintenances.fields.partPrice' | translate"
+          />
+        </div>
+        <div class="col-span-2 flex items-center">
+          <p-button
+            icon="pi pi-trash"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+            (onClick)="removePart(i)"
+          />
+        </div>
+      </div>
+    }
+  </div>
+</form>
+
+<div class="flex justify-end gap-2 p-4 border-t">
+  <p-button
+    [label]="'buttons.cancel' | translate"
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="onCancel()"
+  />
+  <p-button
+    [label]="'buttons.save' | translate"
+    (onClick)="onSubmit()"
+    [loading]="loading()"
+  />
+</div>

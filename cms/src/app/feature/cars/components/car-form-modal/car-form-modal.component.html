@@ -1,0 +1,177 @@
+<form [formGroup]="form" class="grid grid-cols-12 gap-4 p-4">
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.userId" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="userId"
+      [useGrouping]="false"
+      styleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('userId')?.errors ?? null"
+      [control]="form.get('userId')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.brand" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="brand" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('brand')?.errors ?? null"
+      [control]="form.get('brand')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.model" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="model" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('model')?.errors ?? null"
+      [control]="form.get('model')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.year" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="year"
+      [useGrouping]="false"
+      styleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('year')?.errors ?? null"
+      [control]="form.get('year')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.fuelType" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-select
+      formControlName="fuelType"
+      [options]="fuelTypeOptions"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full"
+      placeholder="Select..."
+    />
+    <app-field-errors
+      [errors]="form.get('fuelType')?.errors ?? null"
+      [control]="form.get('fuelType')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.bodyType" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-select
+      formControlName="bodyType"
+      [options]="bodyTypeOptions"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full"
+      placeholder="Select..."
+    />
+    <app-field-errors
+      [errors]="form.get('bodyType')?.errors ?? null"
+      [control]="form.get('bodyType')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.vinNumber" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="vinNumber" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('vinNumber')?.errors ?? null"
+      [control]="form.get('vinNumber')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.color" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="color" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('color')?.errors ?? null"
+      [control]="form.get('color')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.mileage" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="mileage"
+      [useGrouping]="false"
+      styleClass="w-full"
+      suffix=" km"
+    />
+    <app-field-errors
+      [errors]="form.get('mileage')?.errors ?? null"
+      [control]="form.get('mileage')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.registrationDate" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-datepicker
+      fluid
+      formControlName="registrationDate"
+      dateFormat="yy-mm-dd"
+      styleClass="w-full"
+      [showIcon]="true"
+    />
+    <app-field-errors
+      [errors]="form.get('registrationDate')?.errors ?? null"
+      [control]="form.get('registrationDate')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.engineCode" | translate }}
+    </label>
+    <input pInputText formControlName="engineCode" class="w-full" />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "cars.fields.transmissionCode" | translate }}
+    </label>
+    <input pInputText formControlName="transmissionCode" class="w-full" />
+  </div>
+</form>
+
+<div class="flex justify-end gap-2 p-4 border-t">
+  <p-button
+    [label]="'buttons.cancel' | translate"
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="onCancel()"
+  />
+  <p-button
+    [label]="'buttons.save' | translate"
+    (onClick)="onSubmit()"
+    [loading]="loading()"
+  />
+</div>

@@ -1,0 +1,229 @@
+<!-- Mobile Card View -->
+<div class="md:hidden">
+  @if (loading()) {
+    <div class="space-y-4">
+      @for (row of skeletonRows(); track row) {
+        <div class="bg-white rounded-lg border p-4">
+          <div class="space-y-3">
+            @for (header of tableHeader(); track header.field) {
+              <div class="flex justify-between items-center">
+                <p-skeleton width="80px" height="1rem" />
+                <p-skeleton width="120px" height="1rem" />
+              </div>
+            }
+          </div>
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <div class="flex justify-end gap-2 mt-4 pt-4 border-t">
+              <p-skeleton width="100px" height="2rem" />
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else if (tableData().length === 0) {
+    <div class="bg-white rounded-lg border p-8 text-center text-gray-500">
+      {{ "common.noData" | translate }}
+    </div>
+  } @else {
+    <div class="space-y-4">
+      @for (row of tableData(); track $any(row).id) {
+        <div class="bg-white rounded-lg border p-4 m-2">
+          <div class="space-y-2">
+            @for (header of tableHeader(); track header.field) {
+              <div
+                class="flex justify-between items-center py-1 border-b border-gray-100"
+              >
+                <span class="text-sm text-gray-500">{{
+                  header.header | translate
+                }}</span>
+                <span class="text-sm font-medium text-gray-900 text-right">
+                  @if (getColumnTemplate(header.field); as tmpl) {
+                    <ng-container
+                      [ngTemplateOutlet]="tmpl.templateRef"
+                      [ngTemplateOutletContext]="{ $implicit: row }"
+                    />
+                  } @else if (header.date) {
+                    {{ $any(row)[header.field] | date: "dd.MM.yyyy" }}
+                  } @else {
+                    {{ $any(row)[header.field] ?? "-" }}
+                  }
+                </span>
+              </div>
+            }
+          </div>
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <div class="flex justify-end gap-1 mt-3 pt-3 border-t">
+              @if (options().showPreview) {
+                <p-button
+                  icon="pi pi-eye"
+                  [rounded]="true"
+                  [text]="true"
+                  severity="info"
+                  (onClick)="onPreview($any(row).id)"
+                />
+              }
+              @if (options().showEdit) {
+                <p-button
+                  icon="pi pi-pencil"
+                  [rounded]="true"
+                  [text]="true"
+                  severity="success"
+                  (onClick)="onEdit($any(row).id)"
+                />
+              }
+              @if (options().showDelete) {
+                <p-button
+                  icon="pi pi-trash"
+                  [rounded]="true"
+                  [text]="true"
+                  severity="danger"
+                  (onClick)="onDelete($event, $any(row).id)"
+                />
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- Desktop Table View -->
+<div class="hidden md:block">
+  @if (loading()) {
+    <p-table [value]="skeletonRows()" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template #header>
+        <tr>
+          @for (header of tableHeader(); track header.field) {
+            <th>{{ header.header | translate }}</th>
+          }
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <th>{{ "common.actions" | translate }}</th>
+          }
+        </tr>
+      </ng-template>
+      <ng-template #body>
+        <tr>
+          @for (header of tableHeader(); track header.field) {
+            <td><p-skeleton width="100%" height="1.5rem" /></td>
+          }
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <td><p-skeleton width="80px" height="1.5rem" /></td>
+          }
+        </tr>
+      </ng-template>
+    </p-table>
+  } @else {
+    <p-table
+      [value]="$any(tableData())"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template #header>
+        <tr>
+          @for (header of tableHeader(); track header.field) {
+            <th
+              [class.cursor-pointer]="header.sort"
+              (click)="header.sort ? onSort(header) : null"
+            >
+              <div class="flex items-center gap-1">
+                {{ header.header | translate }}
+                @if (header.sort) {
+                  @if (header.sort.sortDirection === "asc") {
+                    <i class="pi pi-sort-up text-xs"></i>
+                  } @else if (header.sort.sortDirection === "desc") {
+                    <i class="pi pi-sort-down text-xs"></i>
+                  } @else {
+                    <i class="pi pi-sort text-xs text-gray-400"></i>
+                  }
+                }
+              </div>
+            </th>
+          }
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <th>{{ "common.actions" | translate }}</th>
+          }
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-row>
+        <tr>
+          @for (header of tableHeader(); track header.field) {
+            <td>
+              @if (getColumnTemplate(header.field); as tmpl) {
+                <ng-container
+                  [ngTemplateOutlet]="tmpl.templateRef"
+                  [ngTemplateOutletContext]="{ $implicit: row }"
+                />
+              } @else if (header.date) {
+                {{ $any(row)[header.field] | date: "dd.MM.yyyy" }}
+              } @else {
+                {{ $any(row)[header.field] }}
+              }
+            </td>
+          }
+          @if (
+            options().showPreview || options().showDelete || options().showEdit
+          ) {
+            <td>
+              <div class="flex">
+                @if (options().showPreview) {
+                  <p-button
+                    icon="pi pi-eye"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="info"
+                    (onClick)="onPreview($any(row).id)"
+                  />
+                }
+                @if (options().showEdit) {
+                  <p-button
+                    icon="pi pi-pencil"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="success"
+                    (onClick)="onEdit($any(row).id)"
+                  />
+                }
+                @if (options().showDelete) {
+                  <p-button
+                    icon="pi pi-trash"
+                    [rounded]="true"
+                    [text]="true"
+                    severity="danger"
+                    (onClick)="onDelete($event, $any(row).id)"
+                  />
+                }
+              </div>
+            </td>
+          }
+        </tr>
+      </ng-template>
+
+      <ng-template #emptymessage>
+        <tr>
+          <td
+            [attr.colspan]="tableHeader().length + 1"
+            class="text-center py-8 text-gray-500"
+          >
+            {{ "common.noData" | translate }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  }
+</div>
+
+<app-paginator
+  [pagination]="pagination()"
+  (pageChange)="onPageChange($event)"
+/>

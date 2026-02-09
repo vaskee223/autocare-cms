@@ -1,0 +1,87 @@
+<form [formGroup]="form" class="grid grid-cols-12 gap-4 p-4">
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "fuelConsumptions.fields.refuelDate" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-datepicker
+      fluid
+      formControlName="refuelDate"
+      dateFormat="yy-mm-dd"
+      styleClass="w-full"
+      [showIcon]="true"
+    />
+    <app-field-errors
+      [errors]="form.get('refuelDate')?.errors ?? null"
+      [control]="form.get('refuelDate')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "fuelConsumptions.fields.litersRefueled" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="litersRefueled"
+      [useGrouping]="false"
+      [minFractionDigits]="0"
+      [maxFractionDigits]="2"
+      styleClass="w-full"
+      suffix=" L"
+    />
+    <app-field-errors
+      [errors]="form.get('litersRefueled')?.errors ?? null"
+      [control]="form.get('litersRefueled')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "fuelConsumptions.fields.pricePerLiter" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="pricePerLiter"
+      [useGrouping]="false"
+      [minFractionDigits]="0"
+      [maxFractionDigits]="2"
+      styleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('pricePerLiter')?.errors ?? null"
+      [control]="form.get('pricePerLiter')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "fuelConsumptions.fields.startMileage" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-inputnumber
+      formControlName="startMileage"
+      [useGrouping]="false"
+      styleClass="w-full"
+      suffix=" km"
+    />
+    <app-field-errors
+      [errors]="form.get('startMileage')?.errors ?? null"
+      [control]="form.get('startMileage')"
+    />
+  </div>
+</form>
+
+<div class="flex justify-end gap-2 p-4 border-t">
+  <p-button
+    [label]="'buttons.cancel' | translate"
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="onCancel()"
+  />
+  <p-button
+    [label]="'buttons.save' | translate"
+    (onClick)="onSubmit()"
+    [loading]="loading()"
+  />
+</div>

@@ -1,0 +1,88 @@
+<form [formGroup]="form" class="grid grid-cols-12 gap-4 p-4">
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.firstName" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="firstName" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('firstName')?.errors ?? null"
+      [control]="form.get('firstName')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.lastName" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="lastName" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('lastName')?.errors ?? null"
+      [control]="form.get('lastName')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.email" | translate }} <span class="text-red-500">*</span>
+    </label>
+    <input pInputText formControlName="email" type="email" class="w-full" />
+    <app-field-errors
+      [errors]="form.get('email')?.errors ?? null"
+      [control]="form.get('email')"
+    />
+  </div>
+
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.dateOfBirth" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-datepicker
+      fluid
+      formControlName="dateOfBirth"
+      dateFormat="yy-mm-dd"
+      styleClass="w-full"
+      [showIcon]="true"
+    />
+    <app-field-errors
+      [errors]="form.get('dateOfBirth')?.errors ?? null"
+      [control]="form.get('dateOfBirth')"
+    />
+  </div>
+
+  @if (mode === "add") {
+    <div class="col-span-12 md:col-span-6">
+      <label class="secondary-text">
+        {{ "users.fields.password" | translate }}
+        <span class="text-red-500">*</span>
+      </label>
+      <p-password
+        formControlName="password"
+        [toggleMask]="true"
+        [feedback]="false"
+        styleClass="w-full"
+        inputStyleClass="w-full"
+      />
+      <app-field-errors
+        [errors]="form.get('password')?.errors ?? null"
+        [control]="form.get('password')"
+      />
+    </div>
+  }
+</form>
+
+<div class="flex justify-end gap-2 p-4 border-t">
+  <p-button
+    [label]="'buttons.cancel' | translate"
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="onCancel()"
+  />
+  <p-button
+    [label]="'buttons.save' | translate"
+    (onClick)="onSubmit()"
+    [loading]="loading()"
+  />
+</div>

@@ -1,0 +1,92 @@
+<div class="p-6">
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-4">
+      <p-button
+        icon="pi pi-arrow-left"
+        [rounded]="true"
+        [text]="true"
+        (onClick)="goBack()"
+      />
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">
+          {{ "users.edit.title" | translate }}
+        </h1>
+        @if (user(); as u) {
+          <p class="text-gray-500">{{ u.firstName }} {{ u.lastName }}</p>
+        }
+      </div>
+    </div>
+    <p-button
+      [label]="'buttons.save' | translate"
+      (onClick)="onSubmit()"
+      [loading]="saving()"
+    />
+  </div>
+
+  @if (loading()) {
+    <app-form-skeleton [count]="4" />
+  } @else {
+    <div class="wrapper !p-6">
+      <form [formGroup]="form" class="grid grid-cols-12 gap-4">
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "users.fields.firstName" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <input pInputText formControlName="firstName" class="w-full" />
+          <app-field-errors
+            [errors]="form.get('firstName')?.errors ?? null"
+            [control]="form.get('firstName')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "users.fields.lastName" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <input pInputText formControlName="lastName" class="w-full" />
+          <app-field-errors
+            [errors]="form.get('lastName')?.errors ?? null"
+            [control]="form.get('lastName')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "users.fields.email" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <input
+            pInputText
+            formControlName="email"
+            type="email"
+            class="w-full"
+          />
+          <app-field-errors
+            [errors]="form.get('email')?.errors ?? null"
+            [control]="form.get('email')"
+          />
+        </div>
+
+        <div class="col-span-12 md:col-span-6">
+          <label class="secondary-text">
+            {{ "users.fields.dateOfBirth" | translate }}
+            <span class="text-red-500">*</span>
+          </label>
+          <p-datepicker
+            fluid
+            formControlName="dateOfBirth"
+            dateFormat="yy-mm-dd"
+            styleClass="w-full"
+            [showIcon]="true"
+          />
+          <app-field-errors
+            [errors]="form.get('dateOfBirth')?.errors ?? null"
+            [control]="form.get('dateOfBirth')"
+          />
+        </div>
+      </form>
+    </div>
+  }
+</div>
