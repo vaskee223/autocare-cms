@@ -20,32 +20,32 @@ interface StatCard {
   imports: [TranslatePipe, SkeletonModule],
   template: `
     <div class="p-6">
-      <h1 class="text-2xl font-bold text-gray-900 mb-2">
+      <h1 class="text-2xl font-bold text-gray-900">
         {{ 'dashboard.title' | translate }}
       </h1>
       <p class="text-gray-500 mb-8">{{ 'dashboard.subtitle' | translate }}</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        @if (loading()) {
-          @for (i of [1, 2, 3, 4]; track i) {
-            <div class="bg-white rounded-xl shadow-sm border p-6">
-              <p-skeleton width="60%" height="1rem" styleClass="mb-3" />
-              <p-skeleton width="40%" height="2rem" />
-            </div>
-          }
-        } @else {
-          @for (card of cards(); track card.label) {
-            <div class="bg-white rounded-xl shadow-sm border p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-sm text-gray-500">{{
-                  card.label | translate
-                }}</span>
-                <i [class]="card.icon + ' text-blue-500 text-xl'"></i>
-              </div>
-              <p class="text-3xl font-bold text-gray-900">{{ card.value }}</p>
-            </div>
-          }
-        }
+        @if (loading()) { @for (i of [1, 2, 3, 4]; track i) {
+        <div
+          class="bg-white rounded-xl shadow-sm border border-gray-900/70 p-6"
+        >
+          <p-skeleton width="60%" height="1rem" styleClass="mb-3" />
+          <p-skeleton width="40%" height="2rem" />
+        </div>
+        } } @else { @for (card of cards(); track card.label) {
+        <div
+          class="bg-white rounded-xl shadow-sm border border-gray-900/70 p-6"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-500">{{
+              card.label | translate
+            }}</span>
+            <i [class]="card.icon + ' text-blue-500 text-xl'"></i>
+          </div>
+          <p class="text-3xl font-bold text-gray-900">{{ card.value }}</p>
+        </div>
+        } }
       </div>
     </div>
   `,

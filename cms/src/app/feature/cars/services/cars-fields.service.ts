@@ -9,21 +9,21 @@ export class CarsFieldsService {
   private fb = inject(FormBuilder);
 
   fuelTypeOptions = [
-    { label: 'Petrol', value: 'petrol' },
-    { label: 'Diesel', value: 'diesel' },
-    { label: 'Petrol + LPG', value: 'petrol_lpg' },
-    { label: 'Petrol + CNG', value: 'petrol_cng' },
+    { label: 'cars.fuelTypes.petrol', value: 'petrol' },
+    { label: 'cars.fuelTypes.diesel', value: 'diesel' },
+    { label: 'cars.fuelTypes.petrol_lpg', value: 'petrol_lpg' },
+    { label: 'cars.fuelTypes.petrol_cng', value: 'petrol_cng' },
   ];
 
   bodyTypeOptions = [
-    { label: 'Sedan', value: 'sedan' },
-    { label: 'Wagon', value: 'wagon' },
-    { label: 'Hatchback', value: 'hatchback' },
-    { label: 'SUV', value: 'suv' },
-    { label: 'Coupe', value: 'coupe' },
-    { label: 'Convertible', value: 'convertible' },
-    { label: 'MPV', value: 'mpv' },
-    { label: 'Pickup', value: 'pickup' },
+    { label: 'cars.bodyTypes.sedan', value: 'sedan' },
+    { label: 'cars.bodyTypes.wagon', value: 'wagon' },
+    { label: 'cars.bodyTypes.hatchback', value: 'hatchback' },
+    { label: 'cars.bodyTypes.suv', value: 'suv' },
+    { label: 'cars.bodyTypes.coupe', value: 'coupe' },
+    { label: 'cars.bodyTypes.convertible', value: 'convertible' },
+    { label: 'cars.bodyTypes.mpv', value: 'mpv' },
+    { label: 'cars.bodyTypes.pickup', value: 'pickup' },
   ];
 
   filterFields: FilterField[] = [

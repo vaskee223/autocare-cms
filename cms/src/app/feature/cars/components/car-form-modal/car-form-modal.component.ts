@@ -12,6 +12,7 @@ import { CarsService } from '../../services/cars.service';
 import { CarsFieldsService } from '../../services/cars-fields.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { FormActionsComponent } from '../../../../shared/form-actions.component';
 
 @Component({
   selector: 'app-car-form-modal',
@@ -22,9 +23,9 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     InputNumberModule,
     DatePickerModule,
     SelectModule,
-    ButtonModule,
     TranslatePipe,
     FieldErrorsComponent,
+    FormActionsComponent,
   ],
   templateUrl: './car-form-modal.component.html',
 })

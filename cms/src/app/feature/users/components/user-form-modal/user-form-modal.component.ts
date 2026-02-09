@@ -11,6 +11,7 @@ import { UsersService } from '../../services/users.service';
 import { UsersFieldsService } from '../../services/users-fields.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { FormActionsComponent } from '../../../../shared/form-actions.component';
 
 @Component({
   selector: 'app-user-form-modal',
@@ -20,9 +21,9 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     InputTextModule,
     PasswordModule,
     DatePickerModule,
-    ButtonModule,
     TranslatePipe,
     FieldErrorsComponent,
+    FormActionsComponent,
   ],
   templateUrl: './user-form-modal.component.html',
 })

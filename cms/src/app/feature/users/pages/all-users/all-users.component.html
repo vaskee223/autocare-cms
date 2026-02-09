@@ -9,6 +9,10 @@
 
   <!-- Table -->
   <div class="wrapper">
+    <h2 class="primary-text">
+      {{ "users.all" | translate }}
+      @if (pagination(); as p) { ({{ p.total }}) }
+    </h2>
     <app-table
       [tableHeader]="tableHeaders"
       [tableData]="data()"

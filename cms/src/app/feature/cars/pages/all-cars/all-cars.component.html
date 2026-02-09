@@ -9,6 +9,10 @@
 
   <!-- Table -->
   <div class="wrapper">
+    <h2 class="primary-text">
+      {{ "cars.all" | translate }}
+      @if (pagination(); as p) { ({{ p.total }}) }
+    </h2>
     <app-table
       [tableHeader]="tableHeaders"
       [tableData]="data()"
@@ -19,7 +23,14 @@
       (handleDelete)="onDelete($event)"
       (handlePreview)="onPreview($event)"
       (handleSort)="onSort($event)"
-    />
+    >
+      <ng-template appColumnTemplate="fuelType" let-row>
+        {{ "cars.fuelTypes." + row.fuelType | translate }}
+      </ng-template>
+      <ng-template appColumnTemplate="bodyType" let-row>
+        {{ "cars.bodyTypes." + row.bodyType | translate }}
+      </ng-template>
+    </app-table>
   </div>
 </app-content-layout>
 

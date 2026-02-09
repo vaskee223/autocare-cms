@@ -73,16 +73,8 @@
   }
 </form>
 
-<div class="flex justify-end gap-2 p-4 border-t">
-  <p-button
-    [label]="'buttons.cancel' | translate"
-    severity="secondary"
-    [outlined]="true"
-    (onClick)="onCancel()"
-  />
-  <p-button
-    [label]="'buttons.save' | translate"
-    (onClick)="onSubmit()"
-    [loading]="loading()"
-  />
-</div>
+<app-form-actions
+  [loading]="loading()"
+  (cancel)="onCancel()"
+  (submit)="onSubmit()"
+/>

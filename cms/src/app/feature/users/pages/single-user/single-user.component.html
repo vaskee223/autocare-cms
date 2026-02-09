@@ -1,27 +1,14 @@
 <div class="p-6">
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center gap-4">
-      <p-button
-        icon="pi pi-arrow-left"
-        [rounded]="true"
-        [text]="true"
-        (onClick)="goBack()"
-      />
-      <div>
-        <h1 class="text-2xl font-bold text-gray-900">
-          {{ "users.edit.title" | translate }}
-        </h1>
-        @if (user(); as u) {
-          <p class="text-gray-500">{{ u.firstName }} {{ u.lastName }}</p>
-        }
-      </div>
-    </div>
-    <p-button
-      [label]="'buttons.save' | translate"
-      (onClick)="onSubmit()"
-      [loading]="saving()"
-    />
-  </div>
+  <app-page-header
+    title="users.edit.title"
+    actionLabel="buttons.save"
+    [loading]="saving()"
+    (action)="onSubmit()"
+  >
+    @if (user(); as u) {
+      <p subtitle class="text-gray-500">{{ u.firstName }} {{ u.lastName }}</p>
+    }
+  </app-page-header>
 
   @if (loading()) {
     <app-form-skeleton [count]="4" />

@@ -1,30 +1,17 @@
 <div class="p-6">
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center gap-4">
-      <p-button
-        icon="pi pi-arrow-left"
-        [rounded]="true"
-        [text]="true"
-        (onClick)="goBack()"
-      />
-      <div>
-        <h1 class="text-2xl font-bold text-gray-900">
-          {{ "maintenances.edit.title" | translate }}
-        </h1>
-        @if (maintenance(); as m) {
-          <p class="text-gray-500">
-            {{ "maintenances.edit.subtitle" | translate }} #{{ m.id }} —
-            {{ "maintenances.edit.car" | translate }} #{{ m.carId }}
-          </p>
-        }
-      </div>
-    </div>
-    <p-button
-      [label]="'buttons.save' | translate"
-      (onClick)="onSubmit()"
-      [loading]="saving()"
-    />
-  </div>
+  <app-page-header
+    title="maintenances.edit.title"
+    actionLabel="buttons.save"
+    [loading]="saving()"
+    (action)="onSubmit()"
+  >
+    @if (maintenance(); as m) {
+      <p subtitle class="text-gray-500">
+        {{ "maintenances.edit.subtitle" | translate }} #{{ m.id }} —
+        {{ "maintenances.edit.car" | translate }} #{{ m.carId }}
+      </p>
+    }
+  </app-page-header>
 
   @if (loading()) {
     <app-form-skeleton [count]="4" />

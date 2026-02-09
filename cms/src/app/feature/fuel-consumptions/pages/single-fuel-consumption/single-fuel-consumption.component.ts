@@ -14,6 +14,7 @@ import { FuelConsumptionsFieldsService } from '../../services/fuel-consumptions-
 import { FuelConsumption } from '../../../../core/interfaces/fuel-consumption.interface';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { PageHeaderComponent } from '../../../../shared/page-header.component';
 
 @Component({
   selector: 'app-single-fuel-consumption',
@@ -22,11 +23,11 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     ReactiveFormsModule,
     InputNumberModule,
     DatePickerModule,
-    ButtonModule,
     FormSkeletonComponent,
     TranslatePipe,
     DecimalPipe,
     FieldErrorsComponent,
+    PageHeaderComponent,
   ],
   templateUrl: './single-fuel-consumption.component.html',
 })
@@ -111,9 +112,5 @@ export class SingleFuelConsumptionComponent implements OnInit {
           this.saving.set(false);
         },
       });
-  }
-
-  goBack(): void {
-    this.router.navigate(['/fuel-consumptions']);
   }
 }

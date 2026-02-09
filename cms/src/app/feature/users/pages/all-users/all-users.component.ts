@@ -17,6 +17,7 @@ import { ContentLayoutComponent } from '../../../../shared/content-layout.compon
 import { FilterFormComponent } from '../../../../shared/filter-form.component';
 import { TableComponent } from '../../../../shared/table/table.component';
 import { UserFormModalComponent } from '../../components/user-form-modal/user-form-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-users',
@@ -26,6 +27,7 @@ import { UserFormModalComponent } from '../../components/user-form-modal/user-fo
     ContentLayoutComponent,
     FilterFormComponent,
     TableComponent,
+    TranslateModule,
   ],
   providers: [DialogService],
   templateUrl: './all-users.component.html',
@@ -188,6 +190,9 @@ export class AllUsersComponent implements OnInit {
   }
 
   private formatDate(date: Date): string {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}-${String(date.getDate()).padStart(2, '0')}`;
   }
 }

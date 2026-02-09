@@ -17,6 +17,8 @@ import { ContentLayoutComponent } from '../../../../shared/content-layout.compon
 import { FilterFormComponent } from '../../../../shared/filter-form.component';
 import { TableComponent } from '../../../../shared/table/table.component';
 import { CarFormModalComponent } from '../../components/car-form-modal/car-form-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ColumnTableDirective } from '../../../../shared/table/column-table.directive';
 
 @Component({
   selector: 'app-all-cars',
@@ -26,6 +28,8 @@ import { CarFormModalComponent } from '../../components/car-form-modal/car-form-
     ContentLayoutComponent,
     FilterFormComponent,
     TableComponent,
+    TranslateModule,
+    ColumnTableDirective,
   ],
   providers: [DialogService],
   templateUrl: './all-cars.component.html',
@@ -88,12 +92,12 @@ export class AllCarsComponent implements OnInit {
     }
     if (filters.registrationDateFrom instanceof Date) {
       queryForm['registrationDateFrom'] = this.formatDate(
-        filters.registrationDateFrom,
+        filters.registrationDateFrom
       );
     }
     if (filters.registrationDateTo instanceof Date) {
       queryForm['registrationDateTo'] = this.formatDate(
-        filters.registrationDateTo,
+        filters.registrationDateTo
       );
     }
 
@@ -181,6 +185,9 @@ export class AllCarsComponent implements OnInit {
   }
 
   private formatDate(date: Date): string {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}-${String(date.getDate()).padStart(2, '0')}`;
   }
 }

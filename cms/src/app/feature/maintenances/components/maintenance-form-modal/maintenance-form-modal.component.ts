@@ -12,6 +12,7 @@ import { MaintenancesService } from '../../services/maintenances.service';
 import { MaintenancesFieldsService } from '../../services/maintenances-fields.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { FormActionsComponent } from '../../../../shared/form-actions.component';
 
 @Component({
   selector: 'app-maintenance-form-modal',
@@ -25,6 +26,7 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     ButtonModule,
     TranslatePipe,
     FieldErrorsComponent,
+    FormActionsComponent,
   ],
   templateUrl: './maintenance-form-modal.component.html',
 })

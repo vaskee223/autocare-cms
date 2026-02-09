@@ -7,6 +7,10 @@
 
   <!-- Table -->
   <div class="wrapper">
+    <h2 class="primary-text">
+      {{ "maintenances.all" | translate }}
+      @if (pagination(); as p) { ({{ p.total }}) }
+    </h2>
     <app-table
       [tableHeader]="tableHeaders"
       [tableData]="data()"
@@ -23,8 +27,11 @@
           [routerLink]="['/cars', row.carId]"
           class="text-blue-600 hover:text-blue-800 hover:underline"
         >
-          {{ row.carId }}
+          {{ row.car.brand }} {{ row.car.model }} {{ row.car.year }}
         </a>
+      </ng-template>
+      <ng-template appColumnTemplate="name" let-row>
+        {{ "maintenances.types." + row.name | translate }}
       </ng-template>
     </app-table>
   </div>

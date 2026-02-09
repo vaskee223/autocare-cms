@@ -14,15 +14,15 @@ import { ButtonModule } from 'primeng/button';
             {{ title() | translate }}
           </h1>
           @if (description()) {
-            <p class="text-gray-500 mt-1">{{ description() | translate }}</p>
+          <p class="text-gray-500">{{ description() | translate }}</p>
           }
         </div>
         @if (actionLabel()) {
-          <p-button
-            [label]="actionLabel()! | translate"
-            icon="pi pi-plus"
-            (onClick)="actionClick.emit()"
-          />
+        <p-button
+          [label]="actionLabel()! | translate"
+          icon="pi pi-plus"
+          (onClick)="actionClick.emit()"
+        />
         }
       </div>
       <ng-content />

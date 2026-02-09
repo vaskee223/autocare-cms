@@ -13,6 +13,7 @@ import { UsersFieldsService } from '../../services/users-fields.service';
 import { User } from '../../../../core/interfaces/user.interface';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { PageHeaderComponent } from '../../../../shared/page-header.component';
 
 @Component({
   selector: 'app-single-user',
@@ -21,10 +22,10 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     ReactiveFormsModule,
     InputTextModule,
     DatePickerModule,
-    ButtonModule,
     FormSkeletonComponent,
     TranslatePipe,
     FieldErrorsComponent,
+    PageHeaderComponent,
   ],
   templateUrl: './single-user.component.html',
 })
@@ -103,9 +104,5 @@ export class SingleUserComponent implements OnInit {
           this.saving.set(false);
         },
       });
-  }
-
-  goBack(): void {
-    this.router.navigate(['/users']);
   }
 }

@@ -29,6 +29,7 @@
   "users": {
     "title": "Users",
     "description": "Manage system users",
+    "all": "All Users",
     "filter": {
       "search": "Search",
       "dateFrom": "Created From",
@@ -63,6 +64,23 @@
   "cars": {
     "title": "Cars",
     "description": "Manage all cars in the system",
+    "all": "All Cars",
+    "fuelTypes": {
+      "petrol": "Gasoline",
+      "diesel": "Diesel",
+      "petrol_lpg": "Petrol + LPG",
+      "petrol_cng": "Petrol + CNG/Metan"
+    },
+    "bodyTypes": {
+      "sedan": "Sedan",
+      "wagon": "Wagon/Estate",
+      "hatchback": "Hatchback",
+      "suv": "SUV",
+      "coupe": "Coupe",
+      "convertible": "Convertible",
+      "mpv": "MPV/Minivan",
+      "pickup": "Pickup"
+    },
     "filter": {
       "search": "Search",
       "mileageFrom": "Mileage From",
@@ -112,15 +130,25 @@
       "title": "Edit Car"
     },
     "maintenances": {
-      "title": "Maintenances"
+      "title": "Maintenances",
+      "all": "All Maintenances"
     },
     "fuelConsumptions": {
-      "title": "Fuel Consumptions"
+      "title": "Fuel Consumptions",
+      "all": "All Fuel Consumptions"
     }
   },
   "maintenances": {
     "title": "Maintenances",
     "description": "Manage all maintenance records",
+    "all": "All Maintenances",
+    "types": {
+      "small_service": "Small Service",
+      "big_service": "Big Service",
+      "tire_change": "Tire Change",
+      "clutch_set": "Clutch Set",
+      "other": "Other"
+    },
     "filter": {
       "search": "Search",
       "mileageFrom": "Mileage From",
@@ -147,6 +175,7 @@
     "table": {
       "id": "ID",
       "carId": "Car ID",
+      "car": "Car",
       "name": "Type",
       "mileage": "Mileage",
       "servicePrice": "Service Price",
@@ -162,6 +191,7 @@
   "fuelConsumptions": {
     "title": "Fuel Consumptions",
     "description": "Manage all fuel consumption records",
+    "all": "All Fuel Consumptions",
     "filter": {
       "search": "Search",
       "dateFrom": "Refuel Date From",
@@ -183,6 +213,7 @@
     "table": {
       "id": "ID",
       "carId": "Car ID",
+      "car": "Car",
       "refuelDate": "Refuel Date",
       "litersRefueled": "Liters",
       "totalCost": "Total Cost",

@@ -15,6 +15,7 @@ import { MaintenancesFieldsService } from '../../services/maintenances-fields.se
 import { Maintenance } from '../../../../core/interfaces/maintenance.interface';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { PageHeaderComponent } from '../../../../shared/page-header.component';
 
 @Component({
   selector: 'app-single-maintenance',
@@ -25,10 +26,11 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     InputNumberModule,
     DatePickerModule,
     SelectModule,
-    ButtonModule,
     FormSkeletonComponent,
     TranslatePipe,
     FieldErrorsComponent,
+    PageHeaderComponent,
+    ButtonModule,
   ],
   templateUrl: './single-maintenance.component.html',
 })
@@ -85,7 +87,7 @@ export class SingleMaintenanceComponent implements OnInit {
           if (res.data.replacedParts) {
             for (const part of res.data.replacedParts) {
               this.replacedParts.push(
-                this.fieldsService.createPartGroup(part.name, part.price),
+                this.fieldsService.createPartGroup(part.name, part.price)
               );
             }
           }
@@ -110,7 +112,10 @@ export class SingleMaintenanceComponent implements OnInit {
 
     if (formValue.date instanceof Date) {
       const d = formValue.date as Date;
-      formValue.date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      formValue.date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(
+        2,
+        '0'
+      )}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
     this.maintenancesService
@@ -129,9 +134,5 @@ export class SingleMaintenanceComponent implements OnInit {
           this.saving.set(false);
         },
       });
-  }
-
-  goBack(): void {
-    this.router.navigate(['/maintenances']);
   }
 }

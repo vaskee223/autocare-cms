@@ -17,6 +17,7 @@ import { FilterFormComponent } from '../../../../shared/filter-form.component';
 import { TableComponent } from '../../../../shared/table/table.component';
 import { ColumnTableDirective } from '../../../../shared/table/column-table.directive';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-maintenances',
@@ -28,6 +29,7 @@ import { RouterLink } from '@angular/router';
     TableComponent,
     ColumnTableDirective,
     RouterLink,
+    TranslateModule,
   ],
   templateUrl: './all-maintenances.component.html',
 })
@@ -154,6 +156,9 @@ export class AllMaintenancesComponent implements OnInit {
   }
 
   private formatDate(date: Date): string {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}-${String(date.getDate()).padStart(2, '0')}`;
   }
 }

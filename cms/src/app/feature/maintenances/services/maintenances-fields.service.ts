@@ -9,11 +9,11 @@ export class MaintenancesFieldsService {
   private fb = inject(FormBuilder);
 
   maintenanceNameOptions = [
-    { label: 'Small Service', value: 'small_service' },
-    { label: 'Big Service', value: 'big_service' },
-    { label: 'Tire Change', value: 'tire_change' },
-    { label: 'Clutch Set', value: 'clutch_set' },
-    { label: 'Other', value: 'other' },
+    { label: 'maintenances.types.small_service', value: 'small_service' },
+    { label: 'maintenances.types.big_service', value: 'big_service' },
+    { label: 'maintenances.types.tire_change', value: 'tire_change' },
+    { label: 'maintenances.types.clutch_set', value: 'clutch_set' },
+    { label: 'maintenances.types.other', value: 'other' },
   ];
 
   filterFields: FilterField[] = [
@@ -98,7 +98,7 @@ export class MaintenancesFieldsService {
       header: 'maintenances.table.id',
       sort: { sortParam: 'id', sortDirection: '', activeSort: false },
     },
-    { field: 'carId', header: 'maintenances.table.carId' },
+    { field: 'carId', header: 'maintenances.table.car' },
     { field: 'name', header: 'maintenances.table.name' },
     { field: 'mileage', header: 'maintenances.table.mileage' },
     { field: 'servicePrice', header: 'maintenances.table.servicePrice' },

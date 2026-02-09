@@ -31,6 +31,7 @@ import { ColumnTableDirective } from '../../../../shared/table/column-table.dire
 import { RouterLink } from '@angular/router';
 import { MaintenanceFormModalComponent } from '../../../maintenances/components/maintenance-form-modal/maintenance-form-modal.component';
 import { FuelConsumptionFormModalComponent } from '../../../fuel-consumptions/components/fuel-consumption-form-modal/fuel-consumption-form-modal.component';
+import { PageHeaderComponent } from '../../../../shared/page-header.component';
 
 @Component({
   selector: 'app-single-car',
@@ -41,14 +42,15 @@ import { FuelConsumptionFormModalComponent } from '../../../fuel-consumptions/co
     InputNumberModule,
     DatePickerModule,
     SelectModule,
-    ButtonModule,
     FormSkeletonComponent,
     ConfirmPopupModule,
     TranslatePipe,
     FieldErrorsComponent,
     TableComponent,
     ColumnTableDirective,
+    PageHeaderComponent,
     RouterLink,
+    ButtonModule,
   ],
   providers: [DialogService],
   templateUrl: './single-car.component.html',
@@ -145,7 +147,9 @@ export class SingleCarComponent implements OnInit {
 
     if (formValue.registrationDate instanceof Date) {
       const d = formValue.registrationDate as Date;
-      formValue.registrationDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      formValue.registrationDate = `${d.getFullYear()}-${String(
+        d.getMonth() + 1
+      ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
     this.carsService
@@ -166,10 +170,6 @@ export class SingleCarComponent implements OnInit {
       });
   }
 
-  goBack(): void {
-    this.router.navigate(['/cars']);
-  }
-
   // --- Maintenances ---
 
   loadMaintenances(): void {
@@ -179,7 +179,7 @@ export class SingleCarComponent implements OnInit {
         this.carId,
         this.maintenancesPage,
         this.maintenancesPerPage,
-        {},
+        {}
       )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -251,7 +251,7 @@ export class SingleCarComponent implements OnInit {
         this.carId,
         this.fuelConsumptionsPage,
         this.fuelConsumptionsPerPage,
-        {},
+        {}
       )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

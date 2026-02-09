@@ -1,204 +1,191 @@
 <div class="p-6">
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center gap-4">
-      <p-button
-        icon="pi pi-arrow-left"
-        [rounded]="true"
-        [text]="true"
-        (onClick)="goBack()"
-      />
-      <div>
-        <h1 class="text-2xl font-bold text-gray-900">
-          {{ "cars.edit.title" | translate }}
-        </h1>
-        @if (car(); as c) {
-          <p class="text-gray-500">
-            {{ c.brand }} {{ c.model }} ({{ c.year }})
-          </p>
-        }
-      </div>
-    </div>
-    <p-button
-      [label]="'buttons.save' | translate"
-      (onClick)="onSubmit()"
-      [loading]="saving()"
-    />
-  </div>
+  <app-page-header
+    title="cars.edit.title"
+    actionLabel="buttons.save"
+    [loading]="saving()"
+    (action)="onSubmit()"
+  >
+    @if (car(); as c) {
+    <p subtitle class="text-gray-500">
+      {{ c.brand }} {{ c.model }} ({{ c.year }})
+    </p>
+    }
+  </app-page-header>
 
   <!-- Car Edit Form -->
   @if (loading()) {
-    <app-form-skeleton [count]="12" styleClass="mb-6" />
+  <app-form-skeleton [count]="12" styleClass="mb-6" />
   } @else {
-    <div class="wrapper !p-6 mb-6">
-      <form [formGroup]="form" class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.userId" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-inputnumber
-            formControlName="userId"
-            [useGrouping]="false"
-            styleClass="w-full"
-          />
-          <app-field-errors
-            [errors]="form.get('userId')?.errors ?? null"
-            [control]="form.get('userId')"
-          />
-        </div>
+  <div class="wrapper !p-6 mb-6">
+    <form [formGroup]="form" class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.userId" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber
+          formControlName="userId"
+          [useGrouping]="false"
+          styleClass="w-full"
+        />
+        <app-field-errors
+          [errors]="form.get('userId')?.errors ?? null"
+          [control]="form.get('userId')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.brand" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="brand" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('brand')?.errors ?? null"
-            [control]="form.get('brand')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.brand" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="brand" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('brand')?.errors ?? null"
+          [control]="form.get('brand')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.model" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="model" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('model')?.errors ?? null"
-            [control]="form.get('model')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.model" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="model" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('model')?.errors ?? null"
+          [control]="form.get('model')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.year" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-inputnumber
-            formControlName="year"
-            [useGrouping]="false"
-            styleClass="w-full"
-          />
-          <app-field-errors
-            [errors]="form.get('year')?.errors ?? null"
-            [control]="form.get('year')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.year" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber
+          formControlName="year"
+          [useGrouping]="false"
+          styleClass="w-full"
+        />
+        <app-field-errors
+          [errors]="form.get('year')?.errors ?? null"
+          [control]="form.get('year')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.fuelType" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-select
-            formControlName="fuelType"
-            [options]="fuelTypeOptions"
-            optionLabel="label"
-            optionValue="value"
-            styleClass="w-full"
-            placeholder="Select..."
-          />
-          <app-field-errors
-            [errors]="form.get('fuelType')?.errors ?? null"
-            [control]="form.get('fuelType')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.fuelType" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-select
+          formControlName="fuelType"
+          [options]="fuelTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="w-full"
+          placeholder="Select..."
+        />
+        <app-field-errors
+          [errors]="form.get('fuelType')?.errors ?? null"
+          [control]="form.get('fuelType')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.bodyType" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-select
-            formControlName="bodyType"
-            [options]="bodyTypeOptions"
-            optionLabel="label"
-            optionValue="value"
-            styleClass="w-full"
-            placeholder="Select..."
-          />
-          <app-field-errors
-            [errors]="form.get('bodyType')?.errors ?? null"
-            [control]="form.get('bodyType')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.bodyType" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-select
+          formControlName="bodyType"
+          [options]="bodyTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="w-full"
+          placeholder="Select..."
+        />
+        <app-field-errors
+          [errors]="form.get('bodyType')?.errors ?? null"
+          [control]="form.get('bodyType')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.vinNumber" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="vinNumber" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('vinNumber')?.errors ?? null"
-            [control]="form.get('vinNumber')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.vinNumber" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="vinNumber" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('vinNumber')?.errors ?? null"
+          [control]="form.get('vinNumber')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.color" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="color" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('color')?.errors ?? null"
-            [control]="form.get('color')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.color" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="color" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('color')?.errors ?? null"
+          [control]="form.get('color')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.mileage" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-inputnumber
-            formControlName="mileage"
-            [useGrouping]="false"
-            styleClass="w-full"
-            suffix=" km"
-          />
-          <app-field-errors
-            [errors]="form.get('mileage')?.errors ?? null"
-            [control]="form.get('mileage')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.mileage" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber
+          formControlName="mileage"
+          [useGrouping]="false"
+          styleClass="w-full"
+          suffix=" km"
+        />
+        <app-field-errors
+          [errors]="form.get('mileage')?.errors ?? null"
+          [control]="form.get('mileage')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.registrationDate" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-datepicker
-            fluid
-            formControlName="registrationDate"
-            dateFormat="yy-mm-dd"
-            styleClass="w-full"
-            [showIcon]="true"
-          />
-          <app-field-errors
-            [errors]="form.get('registrationDate')?.errors ?? null"
-            [control]="form.get('registrationDate')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.registrationDate" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-datepicker
+          fluid
+          formControlName="registrationDate"
+          dateFormat="yy-mm-dd"
+          styleClass="w-full"
+          [showIcon]="true"
+        />
+        <app-field-errors
+          [errors]="form.get('registrationDate')?.errors ?? null"
+          [control]="form.get('registrationDate')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.engineCode" | translate }}
-          </label>
-          <input pInputText formControlName="engineCode" class="w-full" />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.engineCode" | translate }}
+        </label>
+        <input pInputText formControlName="engineCode" class="w-full" />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "cars.fields.transmissionCode" | translate }}
-          </label>
-          <input pInputText formControlName="transmissionCode" class="w-full" />
-        </div>
-      </form>
-    </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "cars.fields.transmissionCode" | translate }}
+        </label>
+        <input pInputText formControlName="transmissionCode" class="w-full" />
+      </div>
+    </form>
+  </div>
   }
 
   <!-- Maintenances Section -->
@@ -214,6 +201,10 @@
       />
     </div>
     <div class="wrapper">
+      <h2 class="primary-text">
+        {{ "cars.maintenances.all" | translate }}
+        @if (maintenancesPagination(); as p) { ({{ p.total }}) }
+      </h2>
       <app-table
         [tableHeader]="maintenancesTableHeaders"
         [tableData]="maintenancesData()"
@@ -232,6 +223,9 @@
             {{ row.id }}
           </a>
         </ng-template>
+        <ng-template appColumnTemplate="name" let-row>
+          {{ "maintenances.types." + row.name | translate }}
+        </ng-template>
       </app-table>
     </div>
   </div>
@@ -249,6 +243,10 @@
       />
     </div>
     <div class="wrapper">
+      <h2 class="primary-text">
+        {{ "cars.fuelConsumptions.all" | translate }}
+        @if (fuelConsumptionsPagination(); as p) { ({{ p.total }}) }
+      </h2>
       <app-table
         [tableHeader]="fuelConsumptionsTableHeaders"
         [tableData]="fuelConsumptionsData()"
@@ -269,9 +267,9 @@
         </ng-template>
         <ng-template appColumnTemplate="completed" let-row>
           @if (row.completed) {
-            <span class="text-green-600"><i class="pi pi-check"></i></span>
+          <span class="text-green-600"><i class="pi pi-check"></i></span>
           } @else {
-            <span class="text-orange-500"><i class="pi pi-clock"></i></span>
+          <span class="text-orange-500"><i class="pi pi-clock"></i></span>
           }
         </ng-template>
       </app-table>

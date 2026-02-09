@@ -10,6 +10,7 @@ import { FuelConsumptionsService } from '../../services/fuel-consumptions.servic
 import { FuelConsumptionsFieldsService } from '../../services/fuel-consumptions-fields.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { FieldErrorsComponent } from '../../../../shared/field-errors.component';
+import { FormActionsComponent } from '../../../../shared/form-actions.component';
 
 @Component({
   selector: 'app-fuel-consumption-form-modal',
@@ -18,9 +19,9 @@ import { FieldErrorsComponent } from '../../../../shared/field-errors.component'
     ReactiveFormsModule,
     InputNumberModule,
     DatePickerModule,
-    ButtonModule,
     TranslatePipe,
     FieldErrorsComponent,
+    FormActionsComponent,
   ],
   templateUrl: './fuel-consumption-form-modal.component.html',
 })

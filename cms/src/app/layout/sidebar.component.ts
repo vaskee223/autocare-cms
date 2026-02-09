@@ -18,10 +18,10 @@ interface MenuItem {
   template: `
     <!-- Mobile overlay -->
     @if (mobileOpen()) {
-      <div
-        class="fixed inset-0 bg-black/50 z-40 md:hidden"
-        (click)="mobileOpen.set(false)"
-      ></div>
+    <div
+      class="fixed inset-0 bg-black/50 z-40 md:hidden"
+      (click)="mobileOpen.set(false)"
+    ></div>
     }
 
     <!-- Mobile toggle button -->
@@ -60,27 +60,27 @@ interface MenuItem {
       <nav class="flex-1 p-2 overflow-hidden">
         <ul class="space-y-1">
           @for (item of menuItems; track item.route) {
-            <li>
-              <a
-                [routerLink]="item.route"
-                routerLinkActive="bg-blue-600"
-                [routerLinkActiveOptions]="{
+          <li>
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="bg-blue-600"
+              [routerLinkActiveOptions]="{
                   exact: item.route === '/dashboard',
                 }"
-                class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-800 transition-colors overflow-hidden"
-                (click)="mobileOpen.set(false)"
+              class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-800 transition-colors overflow-hidden"
+              (click)="mobileOpen.set(false)"
+            >
+              <i
+                [class]="item.icon"
+                class="text-lg min-w-[1.5rem] text-center"
+              ></i>
+              <span
+                class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               >
-                <i
-                  [class]="item.icon"
-                  class="text-lg min-w-[1.5rem] text-center"
-                ></i>
-                <span
-                  class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  {{ item.label | translate }}
-                </span>
-              </a>
-            </li>
+                {{ item.label | translate }}
+              </span>
+            </a>
+          </li>
           }
         </ul>
       </nav>
@@ -88,21 +88,21 @@ interface MenuItem {
       <!-- Footer -->
       <div class="p-2 border-t border-gray-700 overflow-hidden">
         @if (authService.currentUser(); as user) {
-          <div class="flex items-center gap-3 mb-2 px-3 py-2">
-            <div
-              class="w-8 h-8 min-w-[2rem] rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold"
-            >
-              {{ user.firstName.charAt(0) }}{{ user.lastName.charAt(0) }}
-            </div>
-            <div
-              class="text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
-              <p class="font-medium">
-                {{ user.firstName }} {{ user.lastName }}
-              </p>
-              <p class="text-gray-400 text-xs">{{ user.email }}</p>
-            </div>
+        <div class="flex items-center gap-3 mb-2 p-2">
+          <div
+            class="w-8 h-8 min-w-[2rem] rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold"
+          >
+            {{ user.firstName.charAt(0) }}{{ user.lastName.charAt(0) }}
           </div>
+          <div
+            class="text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <p class="font-medium leading-3">
+              {{ user.firstName }} {{ user.lastName }}
+            </p>
+            <p class="text-gray-400 text-xs">{{ user.email }}</p>
+          </div>
+        </div>
         }
         <div class="flex items-center">
           <button

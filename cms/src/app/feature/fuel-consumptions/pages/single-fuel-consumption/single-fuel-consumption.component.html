@@ -1,30 +1,17 @@
 <div class="p-6">
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center gap-4">
-      <p-button
-        icon="pi pi-arrow-left"
-        [rounded]="true"
-        [text]="true"
-        (onClick)="goBack()"
-      />
-      <div>
-        <h1 class="text-2xl font-bold text-gray-900">
-          {{ "fuelConsumptions.edit.title" | translate }}
-        </h1>
-        @if (fuelConsumption(); as fc) {
-          <p class="text-gray-500">
-            {{ "fuelConsumptions.edit.subtitle" | translate }} #{{ fc.id }} —
-            {{ "fuelConsumptions.edit.car" | translate }} #{{ fc.carId }}
-          </p>
-        }
-      </div>
-    </div>
-    <p-button
-      [label]="'buttons.save' | translate"
-      (onClick)="onSubmit()"
-      [loading]="saving()"
-    />
-  </div>
+  <app-page-header
+    title="fuelConsumptions.edit.title"
+    actionLabel="buttons.save"
+    [loading]="saving()"
+    (action)="onSubmit()"
+  >
+    @if (fuelConsumption(); as fc) {
+      <p subtitle class="text-gray-500">
+        {{ "fuelConsumptions.edit.subtitle" | translate }} #{{ fc.id }} —
+        {{ "fuelConsumptions.edit.car" | translate }} #{{ fc.carId }}
+      </p>
+    }
+  </app-page-header>
 
   @if (loading()) {
     <app-form-skeleton [count]="6" />

@@ -67,7 +67,7 @@ export class FuelConsumptionsFieldsService {
       header: 'fuelConsumptions.table.id',
       sort: { sortParam: 'id', sortDirection: '', activeSort: false },
     },
-    { field: 'carId', header: 'fuelConsumptions.table.carId' },
+    { field: 'carId', header: 'fuelConsumptions.table.car' },
     {
       field: 'refuelDate',
       header: 'fuelConsumptions.table.refuelDate',
