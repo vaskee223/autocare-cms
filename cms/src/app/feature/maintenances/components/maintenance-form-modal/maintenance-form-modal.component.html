@@ -11,6 +11,7 @@
       optionValue="value"
       styleClass="w-full"
       placeholder="Select..."
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('name')?.errors ?? null"
@@ -46,6 +47,7 @@
       dateFormat="yy-mm-dd"
       styleClass="w-full"
       [showIcon]="true"
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('date')?.errors ?? null"

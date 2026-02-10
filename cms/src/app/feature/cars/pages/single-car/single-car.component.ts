@@ -75,8 +75,13 @@ export class SingleCarComponent implements OnInit {
   form!: FormGroup;
   carId!: string;
 
-  fuelTypeOptions = this.fieldsService.fuelTypeOptions;
-  bodyTypeOptions = this.fieldsService.bodyTypeOptions;
+  get fuelTypeOptions() {
+    return this.fieldsService.getFuelTypeOptions();
+  }
+
+  get bodyTypeOptions() {
+    return this.fieldsService.getBodyTypeOptions();
+  }
 
   // Maintenances nested table
   maintenancesLoading = signal(false);

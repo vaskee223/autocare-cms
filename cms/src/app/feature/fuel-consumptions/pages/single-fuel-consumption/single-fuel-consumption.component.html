@@ -36,6 +36,7 @@
             dateFormat="yy-mm-dd"
             styleClass="w-full"
             [showIcon]="true"
+            appendTo="body"
           />
           <app-field-errors
             [errors]="form.get('refuelDate')?.errors ?? null"
@@ -120,6 +121,7 @@
             styleClass="w-full"
             [showIcon]="true"
             [showClear]="true"
+            appendTo="body"
           />
         </div>
 

@@ -30,7 +30,7 @@
   } @else {
   <div class="space-y-4">
     @for (row of tableData(); track $any(row).id) {
-    <div class="bg-white rounded-lg border border-gray-900/70 p-4 m-2">
+    <div class="bg-white rounded-lg border border-gray-900/70 p-4 m-2 pb-1">
       <div class="space-y-2">
         @for (header of tableHeader(); track header.field) {
         <div
@@ -56,7 +56,7 @@
       </div>
       @if ( options().showPreview || options().showDelete || options().showEdit
       ) {
-      <div class="flex justify-end gap-1 mt-3 pt-3 border-t">
+      <div class="flex justify-end gap-1 mt-3 pt-1 border-t border-gray-900/40">
         @if (options().showPreview) {
         <p-button
           icon="pi pi-eye"

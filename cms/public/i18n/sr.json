@@ -1,0 +1,274 @@
+{
+  "sidebar": {
+    "title": "Auto Care CMS",
+    "dashboard": "Kontrolna tabla",
+    "users": "Korisnici",
+    "cars": "Automobili",
+    "maintenances": "Servisi",
+    "fuelConsumptions": "Potrošnja goriva",
+    "profile": "Profil",
+    "logout": "Odjava"
+  },
+  "login": {
+    "title": "Admin prijava",
+    "subtitle": "Prijavite se na svoj nalog",
+    "email": "Email",
+    "emailPlaceholder": "Unesite email",
+    "password": "Lozinka",
+    "passwordPlaceholder": "Unesite lozinku",
+    "submit": "Prijavi se"
+  },
+  "dashboard": {
+    "title": "Kontrolna tabla",
+    "subtitle": "Pregled sistema i statistika",
+    "totalUsers": "Ukupno korisnika",
+    "totalCars": "Ukupno automobila",
+    "totalMaintenances": "Ukupno servisa",
+    "totalFuelConsumptions": "Ukupno potrošnja goriva"
+  },
+  "users": {
+    "title": "Korisnici",
+    "description": "Upravljanje korisnicima sistema",
+    "all": "Svi korisnici",
+    "filter": {
+      "search": "Pretraga",
+      "dateFrom": "Kreirano od",
+      "dateTo": "Kreirano do",
+      "placeholders": {
+        "search": "Pretražite po imenu, email-u...",
+        "dateFrom": "Izaberite početni datum",
+        "dateTo": "Izaberite krajnji datum"
+      }
+    },
+    "fields": {
+      "firstName": "Ime",
+      "lastName": "Prezime",
+      "email": "Email",
+      "dateOfBirth": "Datum rođenja",
+      "password": "Lozinka"
+    },
+    "table": {
+      "id": "ID",
+      "firstName": "Ime",
+      "lastName": "Prezime",
+      "email": "Email",
+      "createdAt": "Kreirano"
+    },
+    "add": {
+      "title": "Dodaj korisnika"
+    },
+    "edit": {
+      "title": "Izmeni korisnika"
+    }
+  },
+  "cars": {
+    "title": "Automobili",
+    "description": "Upravljanje svim automobilima u sistemu",
+    "all": "Svi automobili",
+    "fuelTypes": {
+      "petrol": "Benzin",
+      "diesel": "Dizel",
+      "petrol_lpg": "Benzin + TNG",
+      "petrol_cng": "Benzin + CNG/Metan"
+    },
+    "bodyTypes": {
+      "sedan": "Sedan",
+      "wagon": "Karavan",
+      "hatchback": "Hečbek",
+      "suv": "Džip",
+      "coupe": "Kupe",
+      "convertible": "Kabriolet",
+      "mpv": "Minivan",
+      "pickup": "Pikap"
+    },
+    "filter": {
+      "search": "Pretraga",
+      "mileageFrom": "Kilometraža od",
+      "mileageTo": "Kilometraža do",
+      "registrationDateFrom": "Registracija od",
+      "registrationDateTo": "Registracija do",
+      "fuelType": "Tip goriva",
+      "bodyType": "Tip karoserije",
+      "placeholders": {
+        "search": "Pretražite po brendu, modelu, VIN-u...",
+        "mileageFrom": "Min kilometraža",
+        "mileageTo": "Max kilometraža",
+        "registrationDateFrom": "Izaberite početni datum",
+        "registrationDateTo": "Izaberite krajnji datum",
+        "fuelType": "Izaberite tip goriva",
+        "bodyType": "Izaberite tip karoserije"
+      }
+    },
+    "fields": {
+      "userId": "ID korisnika",
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Godina",
+      "fuelType": "Tip goriva",
+      "bodyType": "Tip karoserije",
+      "vinNumber": "VIN broj",
+      "color": "Boja",
+      "mileage": "Kilometraža",
+      "registrationDate": "Datum registracije",
+      "engineCode": "Šifra motora",
+      "transmissionCode": "Šifra menjača"
+    },
+    "table": {
+      "id": "ID",
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Godina",
+      "fuelType": "Tip goriva",
+      "bodyType": "Tip karoserije",
+      "mileage": "Kilometraža",
+      "registrationDate": "Datum registracije"
+    },
+    "add": {
+      "title": "Dodaj automobil"
+    },
+    "edit": {
+      "title": "Izmeni automobil"
+    },
+    "maintenances": {
+      "title": "Servisi",
+      "all": "Svi servisi"
+    },
+    "fuelConsumptions": {
+      "title": "Potrošnja goriva",
+      "all": "Sve potrošnje goriva"
+    }
+  },
+  "maintenances": {
+    "title": "Servisi",
+    "description": "Upravljanje svim zapisima o servisima",
+    "all": "Svi servisi",
+    "types": {
+      "small_service": "Mali servis",
+      "big_service": "Veliki servis",
+      "tire_change": "Zamena guma",
+      "clutch_set": "Kompllet kvačila",
+      "other": "Ostalo"
+    },
+    "filter": {
+      "search": "Pretraga",
+      "mileageFrom": "Kilometraža od",
+      "mileageTo": "Kilometraža do",
+      "dateFrom": "Datum od",
+      "dateTo": "Datum do",
+      "placeholders": {
+        "search": "Pretražite po tipu, automobilu...",
+        "mileageFrom": "Min kilometraža",
+        "mileageTo": "Max kilometraža",
+        "dateFrom": "Izaberite početni datum",
+        "dateTo": "Izaberite krajnji datum"
+      }
+    },
+    "fields": {
+      "name": "Tip",
+      "mileage": "Kilometraža",
+      "date": "Datum",
+      "servicePrice": "Cena servisa",
+      "replacedParts": "Zamenjeni delovi",
+      "partName": "Naziv dela",
+      "partPrice": "Cena dela"
+    },
+    "table": {
+      "id": "ID",
+      "carId": "ID automobila",
+      "car": "Automobil",
+      "name": "Tip",
+      "mileage": "Kilometraža",
+      "servicePrice": "Cena servisa",
+      "date": "Datum"
+    },
+    "edit": {
+      "title": "Izmeni servis",
+      "subtitle": "Servis",
+      "car": "Automobil"
+    },
+    "addPart": "Dodaj deo"
+  },
+  "fuelConsumptions": {
+    "title": "Potrošnja goriva",
+    "description": "Upravljanje svim zapisima o potrošnji goriva",
+    "all": "Sve potrošnje goriva",
+    "filter": {
+      "search": "Pretraga",
+      "dateFrom": "Datum punjenja od",
+      "dateTo": "Datum punjenja do",
+      "placeholders": {
+        "search": "Pretražite...",
+        "dateFrom": "Izaberite početni datum",
+        "dateTo": "Izaberite krajnji datum"
+      }
+    },
+    "fields": {
+      "refuelDate": "Datum punjenja",
+      "emptyDate": "Datum pražnjenja",
+      "litersRefueled": "Napunjeno litara",
+      "pricePerLiter": "Cena po litru",
+      "startMileage": "Početna kilometraža",
+      "endMileage": "Krajnja kilometraža"
+    },
+    "table": {
+      "id": "ID",
+      "carId": "ID automobila",
+      "car": "Automobil",
+      "refuelDate": "Datum punjenja",
+      "litersRefueled": "Litri",
+      "totalCost": "Ukupna cena",
+      "completed": "Status"
+    },
+    "edit": {
+      "title": "Izmeni potrošnju goriva",
+      "subtitle": "Potrošnja goriva",
+      "car": "Automobil"
+    },
+    "phase1": {
+      "title": "Podaci o punjenju"
+    },
+    "phase2": {
+      "title": "Podaci o završetku",
+      "pending": "Popunite datum pražnjenja i krajnju kilometražu da završite unos."
+    },
+    "computed": {
+      "title": "Izračunati rezultati",
+      "distanceTraveled": "Pređena razdaljina",
+      "consumptionPer100km": "Potrošnja na 100km",
+      "costPer100km": "Cena na 100km",
+      "totalCost": "Ukupna cena"
+    }
+  },
+  "profile": {
+    "title": "Moj profil",
+    "description": "Upravljanje podešavanjima naloga",
+    "fields": {
+      "firstName": "Ime",
+      "lastName": "Prezime",
+      "email": "Email",
+      "password": "Nova lozinka",
+      "passwordConfirm": "Potvrdi lozinku"
+    },
+    "passwordHint": "Ostavite polja za lozinku prazna da zadržite trenutnu lozinku.",
+    "deleteAccount": "Obriši nalog"
+  },
+  "buttons": {
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "delete": "Obriši",
+    "add": "Dodaj novo"
+  },
+  "validation": {
+    "required": "Ovo polje je obavezno",
+    "email": "Unesite validnu email adresu",
+    "minlength": "Vrednost je prekratka"
+  },
+  "confirmations": {
+    "delete": "Da li ste sigurni da želite da obrišete ovu stavku?"
+  },
+  "common": {
+    "actions": "Akcije",
+    "noData": "Nema dostupnih podataka",
+    "filters": "Filteri"
+  }
+}

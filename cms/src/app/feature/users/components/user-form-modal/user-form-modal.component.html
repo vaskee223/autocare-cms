@@ -45,6 +45,7 @@
       dateFormat="yy-mm-dd"
       styleClass="w-full"
       [showIcon]="true"
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('dateOfBirth')?.errors ?? null"

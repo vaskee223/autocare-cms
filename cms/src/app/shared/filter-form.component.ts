@@ -56,6 +56,7 @@ import { FilterField } from '../core/interfaces/filter-field.interface';
                   [showIcon]="true"
                   [showClear]="true"
                   [placeholder]="field.placeholder | translate"
+                  appendTo="body"
                 />
               }
               @case ('select') {
@@ -67,6 +68,7 @@ import { FilterField } from '../core/interfaces/filter-field.interface';
                   styleClass="w-full"
                   [showClear]="true"
                   [placeholder]="field.placeholder | translate"
+                  appendTo="body"
                 />
               }
             }

@@ -38,12 +38,17 @@ export class CarFormModalComponent implements OnInit {
   mode: 'add' | 'edit' = 'add';
   loading = signal(false);
 
-  fuelTypeOptions = this.fieldsService.fuelTypeOptions;
-  bodyTypeOptions = this.fieldsService.bodyTypeOptions;
+  get fuelTypeOptions() {
+    return this.fieldsService.getFuelTypeOptions();
+  }
+
+  get bodyTypeOptions() {
+    return this.fieldsService.getBodyTypeOptions();
+  }
 
   constructor(
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig,
+    public config: DynamicDialogConfig
   ) {}
 
   ngOnInit(): void {
@@ -101,7 +106,9 @@ export class CarFormModalComponent implements OnInit {
 
     if (formValue.registrationDate instanceof Date) {
       const d = formValue.registrationDate as Date;
-      formValue.registrationDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      formValue.registrationDate = `${d.getFullYear()}-${String(
+        d.getMonth() + 1
+      ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
     if (this.mode === 'add') {

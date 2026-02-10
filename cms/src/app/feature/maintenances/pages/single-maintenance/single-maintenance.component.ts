@@ -48,7 +48,9 @@ export class SingleMaintenanceComponent implements OnInit {
   form!: FormGroup;
   maintenanceId!: string;
 
-  maintenanceNameOptions = this.fieldsService.maintenanceNameOptions;
+  get maintenanceNameOptions() {
+    return this.fieldsService.getMaintenanceNameOptions();
+  }
 
   ngOnInit(): void {
     this.maintenanceId = this.route.snapshot.params['id'];

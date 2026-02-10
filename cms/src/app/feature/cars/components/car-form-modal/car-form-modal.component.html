@@ -63,6 +63,7 @@
       optionValue="value"
       styleClass="w-full"
       placeholder="Select..."
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('fuelType')?.errors ?? null"
@@ -82,6 +83,7 @@
       optionValue="value"
       styleClass="w-full"
       placeholder="Select..."
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('bodyType')?.errors ?? null"
@@ -140,6 +142,7 @@
       dateFormat="yy-mm-dd"
       styleClass="w-full"
       [showIcon]="true"
+      appendTo="body"
     />
     <app-field-errors
       [errors]="form.get('registrationDate')?.errors ?? null"

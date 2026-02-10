@@ -4,6 +4,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 
 import { AuthService } from '../core/services/auth.service';
+import { LanguagePickerComponent } from '../shared/language-picker.component';
 
 interface MenuItem {
   label: string;
@@ -14,7 +15,13 @@ interface MenuItem {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, TranslatePipe, ButtonModule],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    TranslatePipe,
+    ButtonModule,
+    LanguagePickerComponent,
+  ],
   template: `
     <!-- Mobile overlay -->
     @if (mobileOpen()) {
@@ -87,6 +94,11 @@ interface MenuItem {
 
       <!-- Footer -->
       <div class="p-2 border-t border-gray-700 overflow-hidden">
+        <!-- Language Picker -->
+        <div class="language-picker-wrapper">
+          <app-language-picker [forceShowText]="mobileOpen()" />
+        </div>
+
         @if (authService.currentUser(); as user) {
         <div class="flex items-center gap-3 mb-2 p-2">
           <div
@@ -106,12 +118,12 @@ interface MenuItem {
         }
         <div class="flex items-center">
           <button
-            class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-800 transition-colors flex-1 text-red-400"
+            class="logout-button flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-800 transition-colors flex-1 text-red-400"
             (click)="onLogout()"
           >
             <i class="pi pi-sign-out text-lg min-w-[1.5rem] text-center"></i>
             <span
-              class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-[2px]"
             >
               {{ 'sidebar.logout' | translate }}
             </span>
@@ -143,14 +155,20 @@ interface MenuItem {
     .mobile-open h2,
     .mobile-open nav span,
     .mobile-open .text-sm,
-    .mobile-open button span {
+    .mobile-open button span,
+    .mobile-open .language-picker-wrapper span {
       opacity: 1 !important;
+    }
+
+    .mobile-open .logout-button {
+      justify-content: center !important;
     }
 
     .sidebar-pinned h2,
     .sidebar-pinned nav span,
     .sidebar-pinned .text-sm,
-    .sidebar-pinned button span {
+    .sidebar-pinned button span,
+    .sidebar-pinned .language-picker-wrapper span {
       opacity: 1 !important;
     }
   `,

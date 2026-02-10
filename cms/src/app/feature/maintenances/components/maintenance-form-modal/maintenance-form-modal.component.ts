@@ -39,7 +39,9 @@ export class MaintenanceFormModalComponent implements OnInit {
   mode: 'add' | 'edit' = 'add';
   loading = signal(false);
 
-  maintenanceNameOptions = this.fieldsService.maintenanceNameOptions;
+  get maintenanceNameOptions() {
+    return this.fieldsService.getMaintenanceNameOptions();
+  }
 
   constructor(
     public ref: DynamicDialogRef,

@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 import { FilterField } from '../../../core/interfaces/filter-field.interface';
 import { TableHeader } from '../../../core/interfaces/table-header.interface';
@@ -7,14 +8,17 @@ import { TableHeader } from '../../../core/interfaces/table-header.interface';
 @Injectable({ providedIn: 'root' })
 export class MaintenancesFieldsService {
   private fb = inject(FormBuilder);
+  private translate = inject(TranslateService);
 
-  maintenanceNameOptions = [
-    { label: 'maintenances.types.small_service', value: 'small_service' },
-    { label: 'maintenances.types.big_service', value: 'big_service' },
-    { label: 'maintenances.types.tire_change', value: 'tire_change' },
-    { label: 'maintenances.types.clutch_set', value: 'clutch_set' },
-    { label: 'maintenances.types.other', value: 'other' },
-  ];
+  getMaintenanceNameOptions() {
+    return [
+      { label: this.translate.instant('maintenances.types.small_service'), value: 'small_service' },
+      { label: this.translate.instant('maintenances.types.big_service'), value: 'big_service' },
+      { label: this.translate.instant('maintenances.types.tire_change'), value: 'tire_change' },
+      { label: this.translate.instant('maintenances.types.clutch_set'), value: 'clutch_set' },
+      { label: this.translate.instant('maintenances.types.other'), value: 'other' },
+    ];
+  }
 
   filterFields: FilterField[] = [
     {
