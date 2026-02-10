@@ -9,7 +9,9 @@
   <div class="wrapper">
     <h2 class="primary-text">
       {{ "fuelConsumptions.all" | translate }}
-      @if (pagination(); as p) { ({{ p.total }}) }
+      @if (pagination(); as p) {
+        ({{ p.total }})
+      }
     </h2>
     <app-table
       [tableHeader]="tableHeaders"
@@ -32,9 +34,9 @@
       </ng-template>
       <ng-template appColumnTemplate="completed" let-row>
         @if (row.completed) {
-        <span class="text-green-600"><i class="pi pi-check"></i></span>
+          <span class="text-green-600"><i class="pi pi-check"></i></span>
         } @else {
-        <span class="text-orange-500"><i class="pi pi-clock"></i></span>
+          <span class="text-orange-500"><i class="pi pi-clock"></i></span>
         }
       </ng-template>
     </app-table>

@@ -92,12 +92,12 @@ export class AllCarsComponent implements OnInit {
     }
     if (filters.registrationDateFrom instanceof Date) {
       queryForm['registrationDateFrom'] = this.formatDate(
-        filters.registrationDateFrom
+        filters.registrationDateFrom,
       );
     }
     if (filters.registrationDateTo instanceof Date) {
       queryForm['registrationDateTo'] = this.formatDate(
-        filters.registrationDateTo
+        filters.registrationDateTo,
       );
     }
 
@@ -187,7 +187,7 @@ export class AllCarsComponent implements OnInit {
   private formatDate(date: Date): string {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
       2,
-      '0'
+      '0',
     )}-${String(date.getDate()).padStart(2, '0')}`;
   }
 }

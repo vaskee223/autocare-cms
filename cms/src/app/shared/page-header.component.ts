@@ -22,18 +22,18 @@ import { Router } from '@angular/router';
             {{ title() | translate }}
           </h1>
           @if (subtitle()) {
-          <p class="text-gray-500">{{ subtitle() }}</p>
+            <p class="text-gray-500">{{ subtitle() }}</p>
           }
           <ng-content select="[subtitle]" />
         </div>
       </div>
       @if (actionLabel()) {
-      <p-button
-        icon="pi pi-save"
-        [label]="actionLabel() | translate"
-        (onClick)="action.emit()"
-        [loading]="loading()"
-      />
+        <p-button
+          icon="pi pi-save"
+          [label]="actionLabel() | translate"
+          (onClick)="action.emit()"
+          [loading]="loading()"
+        />
       }
       <ng-content select="[actions]" />
     </div>

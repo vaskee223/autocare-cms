@@ -89,7 +89,7 @@ export class SingleMaintenanceComponent implements OnInit {
           if (res.data.replacedParts) {
             for (const part of res.data.replacedParts) {
               this.replacedParts.push(
-                this.fieldsService.createPartGroup(part.name, part.price)
+                this.fieldsService.createPartGroup(part.name, part.price),
               );
             }
           }
@@ -116,7 +116,7 @@ export class SingleMaintenanceComponent implements OnInit {
       const d = formValue.date as Date;
       formValue.date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(
         2,
-        '0'
+        '0',
       )}-${String(d.getDate()).padStart(2, '0')}`;
     }
 

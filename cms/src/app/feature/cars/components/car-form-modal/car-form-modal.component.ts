@@ -48,7 +48,7 @@ export class CarFormModalComponent implements OnInit {
 
   constructor(
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
   ) {}
 
   ngOnInit(): void {
@@ -107,7 +107,7 @@ export class CarFormModalComponent implements OnInit {
     if (formValue.registrationDate instanceof Date) {
       const d = formValue.registrationDate as Date;
       formValue.registrationDate = `${d.getFullYear()}-${String(
-        d.getMonth() + 1
+        d.getMonth() + 1,
       ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 

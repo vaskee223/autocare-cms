@@ -153,7 +153,7 @@ export class SingleCarComponent implements OnInit {
     if (formValue.registrationDate instanceof Date) {
       const d = formValue.registrationDate as Date;
       formValue.registrationDate = `${d.getFullYear()}-${String(
-        d.getMonth() + 1
+        d.getMonth() + 1,
       ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
@@ -184,7 +184,7 @@ export class SingleCarComponent implements OnInit {
         this.carId,
         this.maintenancesPage,
         this.maintenancesPerPage,
-        {}
+        {},
       )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -256,7 +256,7 @@ export class SingleCarComponent implements OnInit {
         this.carId,
         this.fuelConsumptionsPage,
         this.fuelConsumptionsPerPage,
-        {}
+        {},
       )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

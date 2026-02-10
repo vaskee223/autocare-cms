@@ -12,10 +12,22 @@ export class CarsFieldsService {
 
   getFuelTypeOptions() {
     return [
-      { label: this.translate.instant('cars.fuelTypes.petrol'), value: 'petrol' },
-      { label: this.translate.instant('cars.fuelTypes.diesel'), value: 'diesel' },
-      { label: this.translate.instant('cars.fuelTypes.petrol_lpg'), value: 'petrol_lpg' },
-      { label: this.translate.instant('cars.fuelTypes.petrol_cng'), value: 'petrol_cng' },
+      {
+        label: this.translate.instant('cars.fuelTypes.petrol'),
+        value: 'petrol',
+      },
+      {
+        label: this.translate.instant('cars.fuelTypes.diesel'),
+        value: 'diesel',
+      },
+      {
+        label: this.translate.instant('cars.fuelTypes.petrol_lpg'),
+        value: 'petrol_lpg',
+      },
+      {
+        label: this.translate.instant('cars.fuelTypes.petrol_cng'),
+        value: 'petrol_cng',
+      },
     ];
   }
 
@@ -23,12 +35,21 @@ export class CarsFieldsService {
     return [
       { label: this.translate.instant('cars.bodyTypes.sedan'), value: 'sedan' },
       { label: this.translate.instant('cars.bodyTypes.wagon'), value: 'wagon' },
-      { label: this.translate.instant('cars.bodyTypes.hatchback'), value: 'hatchback' },
+      {
+        label: this.translate.instant('cars.bodyTypes.hatchback'),
+        value: 'hatchback',
+      },
       { label: this.translate.instant('cars.bodyTypes.suv'), value: 'suv' },
       { label: this.translate.instant('cars.bodyTypes.coupe'), value: 'coupe' },
-      { label: this.translate.instant('cars.bodyTypes.convertible'), value: 'convertible' },
+      {
+        label: this.translate.instant('cars.bodyTypes.convertible'),
+        value: 'convertible',
+      },
       { label: this.translate.instant('cars.bodyTypes.mpv'), value: 'mpv' },
-      { label: this.translate.instant('cars.bodyTypes.pickup'), value: 'pickup' },
+      {
+        label: this.translate.instant('cars.bodyTypes.pickup'),
+        value: 'pickup',
+      },
     ];
   }
 

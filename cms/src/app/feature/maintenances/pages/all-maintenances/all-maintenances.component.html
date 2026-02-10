@@ -9,7 +9,9 @@
   <div class="wrapper">
     <h2 class="primary-text">
       {{ "maintenances.all" | translate }}
-      @if (pagination(); as p) { ({{ p.total }}) }
+      @if (pagination(); as p) {
+        ({{ p.total }})
+      }
     </h2>
     <app-table
       [tableHeader]="tableHeaders"

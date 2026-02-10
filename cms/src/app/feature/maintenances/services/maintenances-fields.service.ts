@@ -12,11 +12,26 @@ export class MaintenancesFieldsService {
 
   getMaintenanceNameOptions() {
     return [
-      { label: this.translate.instant('maintenances.types.small_service'), value: 'small_service' },
-      { label: this.translate.instant('maintenances.types.big_service'), value: 'big_service' },
-      { label: this.translate.instant('maintenances.types.tire_change'), value: 'tire_change' },
-      { label: this.translate.instant('maintenances.types.clutch_set'), value: 'clutch_set' },
-      { label: this.translate.instant('maintenances.types.other'), value: 'other' },
+      {
+        label: this.translate.instant('maintenances.types.small_service'),
+        value: 'small_service',
+      },
+      {
+        label: this.translate.instant('maintenances.types.big_service'),
+        value: 'big_service',
+      },
+      {
+        label: this.translate.instant('maintenances.types.tire_change'),
+        value: 'tire_change',
+      },
+      {
+        label: this.translate.instant('maintenances.types.clutch_set'),
+        value: 'clutch_set',
+      },
+      {
+        label: this.translate.instant('maintenances.types.other'),
+        value: 'other',
+      },
     ];
   }
 
