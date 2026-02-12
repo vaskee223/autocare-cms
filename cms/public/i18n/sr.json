@@ -59,6 +59,10 @@
     },
     "edit": {
       "title": "Izmeni korisnika"
+    },
+    "cars": {
+      "title": "Automobili",
+      "all": "Svi automobili"
     }
   },
   "cars": {

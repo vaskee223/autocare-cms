@@ -1,4 +1,3 @@
-<!-- Mobile Card View -->
 <div class="md:hidden">
   @if (loading()) {
     <div class="space-y-4">
@@ -96,7 +95,6 @@
   }
 </div>
 
-<!-- Desktop Table View -->
 <div class="hidden md:block">
   @if (loading()) {
     <p-table [value]="skeletonRows()" [tableStyle]="{ 'min-width': '50rem' }">

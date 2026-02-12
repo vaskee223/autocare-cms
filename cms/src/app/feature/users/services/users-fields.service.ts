@@ -47,6 +47,7 @@ export class UsersFieldsService {
       dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
+      password_confirmation: ['', [Validators.required]],
     });
   }
 

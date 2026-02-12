@@ -10,31 +10,23 @@ export class FuelConsumptionsFieldsService {
 
   filterFields: FilterField[] = [
     {
-      type: 'text',
-      formControlName: 'search',
-      label: 'fuelConsumptions.filter.search',
-      placeholder: 'fuelConsumptions.filter.placeholders.search',
-      colSpan: 4,
-    },
-    {
       type: 'date',
       formControlName: 'dateRangeFrom',
       label: 'fuelConsumptions.filter.dateFrom',
       placeholder: 'fuelConsumptions.filter.placeholders.dateFrom',
-      colSpan: 4,
+      colSpan: 6,
     },
     {
       type: 'date',
       formControlName: 'dateRangeTo',
       label: 'fuelConsumptions.filter.dateTo',
       placeholder: 'fuelConsumptions.filter.placeholders.dateTo',
-      colSpan: 4,
+      colSpan: 6,
     },
   ];
 
   createFilterForm(): FormGroup {
     return this.fb.group({
-      search: [''],
       dateRangeFrom: [null],
       dateRangeTo: [null],
     });

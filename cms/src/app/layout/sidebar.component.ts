@@ -23,7 +23,6 @@ interface MenuItem {
     LanguagePickerComponent,
   ],
   template: `
-    <!-- Mobile overlay -->
     @if (mobileOpen()) {
       <div
         class="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -31,7 +30,6 @@ interface MenuItem {
       ></div>
     }
 
-    <!-- Mobile toggle button -->
     <button
       class="fixed bottom-4 left-4 z-50 md:hidden w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center shadow-lg"
       (click)="mobileOpen.set(!mobileOpen())"
@@ -42,7 +40,6 @@ interface MenuItem {
       ></i>
     </button>
 
-    <!-- Sidebar -->
     <aside
       class="group h-full bg-gray-900 text-white flex-col transition-all duration-300 ease-in-out hidden md:flex"
       [class.md:w-16]="!pinned()"
@@ -51,7 +48,6 @@ interface MenuItem {
       [class.sidebar-pinned]="pinned()"
       [class.mobile-open]="mobileOpen()"
     >
-      <!-- Header -->
       <div
         class="p-4 border-b border-gray-700 h-16 flex items-center overflow-hidden"
       >
@@ -63,7 +59,6 @@ interface MenuItem {
         </h2>
       </div>
 
-      <!-- Navigation -->
       <nav class="flex-1 p-2 overflow-hidden">
         <ul class="space-y-1">
           @for (item of menuItems; track item.route) {
@@ -92,9 +87,7 @@ interface MenuItem {
         </ul>
       </nav>
 
-      <!-- Footer -->
       <div class="p-2 border-t border-gray-700 overflow-hidden">
-        <!-- Language Picker -->
         <div class="language-picker-wrapper">
           <app-language-picker [forceShowText]="mobileOpen()" />
         </div>

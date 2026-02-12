@@ -2,7 +2,6 @@ import { Component, inject, input, output } from '@angular/core';
 import { Location } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TranslatePipe } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-header',
@@ -48,9 +47,9 @@ export class PageHeaderComponent {
   back = output<void>();
   action = output<void>();
 
-  router = inject(Router);
+  private location = inject(Location);
 
   handleBack(): void {
-    this.router.navigate(['../']);
+    this.location.back();
   }
 }

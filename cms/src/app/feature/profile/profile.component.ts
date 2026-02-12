@@ -93,7 +93,6 @@ export class ProfileComponent implements OnInit {
     this.saving.set(true);
     const formValue = this.form.getRawValue();
 
-    // Only include password fields if they are filled in
     const payload: Record<string, unknown> = {
       firstName: formValue.firstName,
       lastName: formValue.lastName,
@@ -112,7 +111,6 @@ export class ProfileComponent implements OnInit {
         next: (res) => {
           this.toastService.addSuccess({ detail: res.message });
           this.saving.set(false);
-          // Update stored user data
           this.authService.currentUser.set(res.data);
           localStorage.setItem('user', JSON.stringify(res.data));
           this.form.patchValue({ password: '', passwordConfirm: '' });

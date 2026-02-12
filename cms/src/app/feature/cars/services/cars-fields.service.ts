@@ -10,6 +10,24 @@ export class CarsFieldsService {
   private fb = inject(FormBuilder);
   private translate = inject(TranslateService);
 
+  readonly fuelTypeToInt: Record<string, number> = {
+    petrol: 1,
+    diesel: 2,
+    petrol_lpg: 3,
+    petrol_cng: 4,
+  };
+
+  readonly bodyTypeToInt: Record<string, number> = {
+    sedan: 1,
+    wagon: 2,
+    hatchback: 3,
+    suv: 4,
+    coupe: 5,
+    convertible: 6,
+    mpv: 7,
+    pickup: 8,
+  };
+
   getFuelTypeOptions() {
     return [
       {
@@ -163,6 +181,21 @@ export class CarsFieldsService {
       header: 'cars.table.id',
       sort: { sortParam: 'id', sortDirection: '', activeSort: false },
     },
+    { field: 'brand', header: 'cars.table.brand' },
+    { field: 'model', header: 'cars.table.model' },
+    { field: 'year', header: 'cars.table.year' },
+    { field: 'fuelType', header: 'cars.table.fuelType' },
+    { field: 'bodyType', header: 'cars.table.bodyType' },
+    { field: 'mileage', header: 'cars.table.mileage' },
+    {
+      field: 'registrationDate',
+      header: 'cars.table.registrationDate',
+      date: true,
+    },
+  ];
+
+  nestedTableHeaders: TableHeader[] = [
+    { field: 'id', header: 'cars.table.id' },
     { field: 'brand', header: 'cars.table.brand' },
     { field: 'model', header: 'cars.table.model' },
     { field: 'year', header: 'cars.table.year' },

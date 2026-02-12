@@ -54,23 +54,40 @@
   </div>
 
   @if (mode === "add") {
-    <div class="col-span-12 md:col-span-6">
-      <label class="secondary-text">
-        {{ "users.fields.password" | translate }}
-        <span class="text-red-500">*</span>
-      </label>
-      <p-password
-        formControlName="password"
-        [toggleMask]="true"
-        [feedback]="false"
-        styleClass="w-full"
-        inputStyleClass="w-full"
-      />
-      <app-field-errors
-        [errors]="form.get('password')?.errors ?? null"
-        [control]="form.get('password')"
-      />
-    </div>
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.password" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-password
+      formControlName="password"
+      [toggleMask]="true"
+      [feedback]="false"
+      styleClass="w-full"
+      inputStyleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('password')?.errors ?? null"
+      [control]="form.get('password')"
+    />
+  </div>
+  <div class="col-span-12 md:col-span-6">
+    <label class="secondary-text">
+      {{ "users.fields.password" | translate }}
+      <span class="text-red-500">*</span>
+    </label>
+    <p-password
+      formControlName="password_confirmation"
+      [toggleMask]="true"
+      [feedback]="false"
+      styleClass="w-full"
+      inputStyleClass="w-full"
+    />
+    <app-field-errors
+      [errors]="form.get('password_confirmation')?.errors ?? null"
+      [control]="form.get('password_confirmation')"
+    />
+  </div>
   }
 </form>
 

@@ -56,6 +56,9 @@ export class CarFormModalComponent implements OnInit {
 
     if (this.mode === 'add') {
       this.form = this.fieldsService.createMainForm();
+      if (this.config.data?.userId) {
+        this.form.patchValue({ userId: this.config.data.userId });
+      }
     } else {
       this.form = this.fieldsService.createEditForm();
       this.loadCar();
@@ -110,6 +113,9 @@ export class CarFormModalComponent implements OnInit {
         d.getMonth() + 1,
       ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
+
+    formValue.fuelType = this.fieldsService.fuelTypeToInt[formValue.fuelType];
+    formValue.bodyType = this.fieldsService.bodyTypeToInt[formValue.bodyType];
 
     if (this.mode === 'add') {
       this.carsService.create(formValue).subscribe({

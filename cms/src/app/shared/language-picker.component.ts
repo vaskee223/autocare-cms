@@ -40,7 +40,6 @@ export class LanguagePickerComponent {
   });
 
   constructor() {
-    // Set initial language
     this.translate.use(this.selectedLanguage());
   }
 

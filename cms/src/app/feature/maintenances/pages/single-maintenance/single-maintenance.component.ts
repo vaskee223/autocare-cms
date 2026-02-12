@@ -120,6 +120,8 @@ export class SingleMaintenanceComponent implements OnInit {
       )}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
+    formValue.name = this.fieldsService.maintenanceNameToInt[formValue.name];
+
     this.maintenancesService
       .update(this.maintenanceId, formValue)
       .pipe(takeUntilDestroyed(this.destroyRef))

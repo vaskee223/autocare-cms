@@ -10,6 +10,14 @@ export class MaintenancesFieldsService {
   private fb = inject(FormBuilder);
   private translate = inject(TranslateService);
 
+  readonly maintenanceNameToInt: Record<string, number> = {
+    small_service: 1,
+    big_service: 2,
+    tire_change: 3,
+    clutch_set: 4,
+    other: 5,
+  };
+
   getMaintenanceNameOptions() {
     return [
       {

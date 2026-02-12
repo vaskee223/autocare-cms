@@ -83,7 +83,6 @@ export class SingleCarComponent implements OnInit {
     return this.fieldsService.getBodyTypeOptions();
   }
 
-  // Maintenances nested table
   maintenancesLoading = signal(false);
   maintenancesData = signal<Maintenance[]>([]);
   maintenancesPagination = signal<Pagination | null>(null);
@@ -91,7 +90,6 @@ export class SingleCarComponent implements OnInit {
   maintenancesPage = PAGINATION_DEFAULTS.page;
   maintenancesPerPage = PAGINATION_DEFAULTS.perPage;
 
-  // Fuel consumptions nested table
   fuelConsumptionsLoading = signal(false);
   fuelConsumptionsData = signal<FuelConsumption[]>([]);
   fuelConsumptionsPagination = signal<Pagination | null>(null);
@@ -157,6 +155,9 @@ export class SingleCarComponent implements OnInit {
       ).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
+    formValue.fuelType = this.fieldsService.fuelTypeToInt[formValue.fuelType];
+    formValue.bodyType = this.fieldsService.bodyTypeToInt[formValue.bodyType];
+
     this.carsService
       .update(this.carId, formValue)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -174,8 +175,6 @@ export class SingleCarComponent implements OnInit {
         },
       });
   }
-
-  // --- Maintenances ---
 
   loadMaintenances(): void {
     this.maintenancesLoading.set(true);
@@ -246,8 +245,6 @@ export class SingleCarComponent implements OnInit {
     this.maintenancesPerPage = event.rows;
     this.loadMaintenances();
   }
-
-  // --- Fuel Consumptions ---
 
   loadFuelConsumptions(): void {
     this.fuelConsumptionsLoading.set(true);

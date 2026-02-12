@@ -6,75 +6,118 @@
     (action)="onSubmit()"
   >
     @if (user(); as u) {
-      <p subtitle class="text-gray-500">{{ u.firstName }} {{ u.lastName }}</p>
+    <p subtitle class="text-gray-500">{{ u.firstName }} {{ u.lastName }}</p>
     }
   </app-page-header>
 
   @if (loading()) {
-    <app-form-skeleton [count]="4" />
+  <app-form-skeleton [count]="4" styleClass="mb-6" />
   } @else {
-    <div class="wrapper !p-6">
-      <form [formGroup]="form" class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "users.fields.firstName" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="firstName" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('firstName')?.errors ?? null"
-            [control]="form.get('firstName')"
-          />
-        </div>
+  <div class="wrapper !p-6 mb-6">
+    <form [formGroup]="form" class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "users.fields.firstName" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="firstName" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('firstName')?.errors ?? null"
+          [control]="form.get('firstName')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "users.fields.lastName" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input pInputText formControlName="lastName" class="w-full" />
-          <app-field-errors
-            [errors]="form.get('lastName')?.errors ?? null"
-            [control]="form.get('lastName')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "users.fields.lastName" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="lastName" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('lastName')?.errors ?? null"
+          [control]="form.get('lastName')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "users.fields.email" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <input
-            pInputText
-            formControlName="email"
-            type="email"
-            class="w-full"
-          />
-          <app-field-errors
-            [errors]="form.get('email')?.errors ?? null"
-            [control]="form.get('email')"
-          />
-        </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "users.fields.email" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <input pInputText formControlName="email" type="email" class="w-full" />
+        <app-field-errors
+          [errors]="form.get('email')?.errors ?? null"
+          [control]="form.get('email')"
+        />
+      </div>
 
-        <div class="col-span-12 md:col-span-6">
-          <label class="secondary-text">
-            {{ "users.fields.dateOfBirth" | translate }}
-            <span class="text-red-500">*</span>
-          </label>
-          <p-datepicker
-            fluid
-            formControlName="dateOfBirth"
-            dateFormat="yy-mm-dd"
-            styleClass="w-full"
-            [showIcon]="true"
-            appendTo="body"
-          />
-          <app-field-errors
-            [errors]="form.get('dateOfBirth')?.errors ?? null"
-            [control]="form.get('dateOfBirth')"
-          />
-        </div>
-      </form>
-    </div>
+      <div class="col-span-12 md:col-span-6">
+        <label class="secondary-text">
+          {{ "users.fields.dateOfBirth" | translate }}
+          <span class="text-red-500">*</span>
+        </label>
+        <p-datepicker
+          fluid
+          formControlName="dateOfBirth"
+          dateFormat="yy-mm-dd"
+          styleClass="w-full"
+          [showIcon]="true"
+          appendTo="body"
+        />
+        <app-field-errors
+          [errors]="form.get('dateOfBirth')?.errors ?? null"
+          [control]="form.get('dateOfBirth')"
+        />
+      </div>
+    </form>
+  </div>
   }
+
+  <div class="mb-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold text-gray-900">
+        {{ "users.cars.title" | translate }}
+      </h2>
+      <p-button
+        [label]="'buttons.add' | translate"
+        icon="pi pi-plus"
+        (onClick)="onAddCar()"
+      />
+    </div>
+    <div class="wrapper">
+      <h2 class="primary-text">
+        {{ "users.cars.all" | translate }}
+        @if (carsPagination(); as p) {
+          ({{ p.total }})
+        }
+      </h2>
+      <app-table
+        [tableHeader]="carsTableHeaders"
+        [tableData]="carsData()"
+        [pagination]="carsPagination()"
+        [loading]="carsLoading()"
+        [options]="{ showPreview: true, showDelete: true, showEdit: false }"
+        (handlePageChange)="onCarsPageChange($event)"
+        (handleDelete)="onCarDelete($event)"
+        (handlePreview)="onCarPreview($event)"
+      >
+        <ng-template appColumnTemplate="id" let-row>
+          <a
+            [routerLink]="['/cars', row.id]"
+            class="text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            {{ row.id }}
+          </a>
+        </ng-template>
+        <ng-template appColumnTemplate="fuelType" let-row>
+          {{ "cars.fuelTypes." + row.fuelType | translate }}
+        </ng-template>
+        <ng-template appColumnTemplate="bodyType" let-row>
+          {{ "cars.bodyTypes." + row.bodyType | translate }}
+        </ng-template>
+      </app-table>
+    </div>
+  </div>
 </div>
+
+<p-confirmpopup />

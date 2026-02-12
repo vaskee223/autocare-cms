@@ -119,6 +119,8 @@ export class MaintenanceFormModalComponent implements OnInit {
       formValue.date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     }
 
+    formValue.name = this.fieldsService.maintenanceNameToInt[formValue.name];
+
     if (this.mode === 'add') {
       this.maintenancesService.create(formValue).subscribe({
         next: (res) => {

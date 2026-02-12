@@ -59,6 +59,10 @@
     },
     "edit": {
       "title": "Edit User"
+    },
+    "cars": {
+      "title": "Cars",
+      "all": "All Cars"
     }
   },
   "cars": {
